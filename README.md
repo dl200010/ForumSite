@@ -14,3 +14,10 @@ PHP Forum site.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+
+
+
+
+The layout of the website is released under The Creative Commons Attribution 3.0 License.
+(layout.LICENSE.txt) https://html5up.net/
