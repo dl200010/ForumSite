@@ -37,6 +37,7 @@
 	<!-- Footer -->
 	<footer id="footer">
 		<p class="copyright">
+			&copy; <?php echo date("Y"); ?> All rights reserved.<br />
 			Design: <a href="https://html5up.net" target="net.html5up">HTML5 UP</a>, but modified.
 		</p>
 	</footer>
