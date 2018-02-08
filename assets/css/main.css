@@ -2070,7 +2070,8 @@
 /* Type */
 
 	body, input, select, textarea {
-		color: #7f888f;
+		color: #f2f2f2;      /*text color*/
+		background-color: #000000;
 		font-family: "Open Sans", sans-serif;
 		font-size: 13pt;
 		font-weight: 400;
@@ -2107,7 +2108,7 @@
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		border-bottom: dotted 1px;
-		color: #f56a6a;
+		color: #f56a6a;       /*menu lines color*/
 		text-decoration: none;
 	}
 
@@ -2121,7 +2122,7 @@
 			}
 
 	strong, b {
-		color: #3d4449;
+		color: #f2f2f2;
 		font-weight: 600;
 	}
 
@@ -2134,7 +2135,7 @@
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #3d4449;
+		color: #f2f2f2;
 		font-family: "Roboto Slab", serif;
 		font-weight: 700;
 		line-height: 1.5;
@@ -2221,7 +2222,6 @@
 	}
 
 	code {
-		background: rgba(230, 235, 237, 0.25);
 		border-radius: 0.375em;
 		border: solid 1px rgba(210, 215, 217, 0.75);
 		font-family: "Courier New", monospace;
@@ -2299,7 +2299,7 @@
 	}
 
 	label {
-		color: #3d4449;
+		color: #f2f2f2;
 		display: block;
 		font-size: 0.9em;
 		font-weight: 600;
@@ -2455,8 +2455,8 @@
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: #3d4449;
-			border-color: #3d4449;
+			background: #f2f2f2;
+			border-color: #f2f2f2;
 			color: #ffffff;
 			content: '\f00c';
 		}
@@ -2894,7 +2894,7 @@
 		}
 
 		table th {
-			color: #3d4449;
+			color: #f2f2f2;
 			font-size: 0.9em;
 			font-weight: 600;
 			padding: 0 0.75em 0.75em 0.75em;
@@ -3587,7 +3587,7 @@
 		-webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 		-ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 		transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-		background-color: #f5f6f7;
+		background-color: #333333;
 		font-size: 0.9em;
 		position: relative;
 		width: 26em;
@@ -3967,7 +3967,7 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-		color: #3d4449;
+		color: #f2f2f2;
 		font-family: "Roboto Slab", serif;
 		font-family: 400;
 		letter-spacing: 0.075em;
