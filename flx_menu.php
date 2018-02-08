@@ -17,7 +17,7 @@
 			<li>
 				<span class="opener">Submenu</span>
 				<ul>
-					<li><a href="#">Lorem Dolor</a></li>
+					<li><a href="?action=elements.home">Lorem Dolor</a></li>
 					<li><a href="#">Ipsum Adipiscing</a></li>
 					<li><a href="#">Tempus Magna</a></li>
 					<li><a href="#">Feugiat Veroeros</a></li>
