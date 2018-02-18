@@ -15,6 +15,10 @@
 	 *  limitations under the License.
 	 */
 
-	//use this file to add settings
+	/*
+	 *  use this file to add settings
+	 *  this file should be where session stuff is done for the entire site
+	 *  it can be left out as well
+	 */
 	$flexaction['tempglobalsetting'] = "tempvalue";
 ?>

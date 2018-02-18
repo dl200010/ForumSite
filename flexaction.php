@@ -40,6 +40,11 @@
 		die();
 	}
 
+	//include the root settings if it exists
+	if(file_exists($flexaction['flx_root_path'].'/flx_settings.php')) {
+		include $flexaction['flx_root_path'].'/flx_settings.php';
+	}
+
 	//include root functions throw error when it does not exist
 	if(file_exists($flexaction['flx_root_path'].'/flx_functions.php')) {
 		include $flexaction['flx_root_path'].'/flx_functions.php';
@@ -74,11 +79,6 @@
 	if	(!file_exists($flexaction['flx_root_path'].$flexaction['functionfolder'].$flexaction['actionfile'])) {
 		echo "Error Processing Request, action not found.";
 		die();
-	}
-
-	//include the root settings if it exists
-	if(file_exists($flexaction['flx_root_path'].'/flx_settings.php')) {
-		include $flexaction['flx_root_path'].'/flx_settings.php';
 	}
 
 	//include root functions throw error when it does not exist
