@@ -16,14 +16,11 @@
 	 */
 
 	//here will be the functions part where each function will be mapped to a folder
+	//this file can be excluded as long as the function exactly matches the folder name
 	switch ($flexaction['function']) {
 		case 'home':
 			$flexaction['functionfolder'] = "/";
 			break;
-		case 'elements':
-			$flexaction['functionfolder'] = "/elements/";
-			break;
 		default:
-			$flexaction['functionfolder'] = "/" . $flexaction['function'] . "/" ;
 	}
 ?>

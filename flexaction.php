@@ -49,18 +49,15 @@
 	if(file_exists($flexaction['flx_root_path'].'/flx_functions.php')) {
 		include $flexaction['flx_root_path'].'/flx_functions.php';
 	}
-	else {
-		echo "Error Processing Request, functions file not found.";
-		die();
+
+	if(!isset($flexaction['functionfolder'])){
+		$flexaction['functionfolder'] = "/" . $flexaction['function'] . "/" ;
 	}
 
 	//throw exception if the function being requested does not exist
 	if	(
-			(!isset($flexaction['functionfolder'])) ||
-			(
-				$flexaction['functionfolder'] !== '/' &&
-				(!file_exists($flexaction['flx_root_path'].$flexaction['functionfolder']))
-			)
+			$flexaction['functionfolder'] !== '/' &&
+			(!file_exists($flexaction['flx_root_path'].$flexaction['functionfolder']))
 		) {
 		echo "Error Processing Request, function not found.";
 		die();
@@ -70,9 +67,9 @@
 	if(file_exists($flexaction['flx_root_path'].$flexaction['functionfolder']."flx_actions.php")) {
 		include $flexaction['flx_root_path'].$flexaction['functionfolder']."flx_actions.php";
 	}
-	else {
-		echo "Error Processing Request, actions file not found.";
-		die();
+
+	if(!isset($flexaction['actionfile'])) {
+		$flexaction['actionfile'] = "dsp_" . $flexaction['action'] . ".php" ;
 	}
 
 	//throw exception if the function being requested does not exist

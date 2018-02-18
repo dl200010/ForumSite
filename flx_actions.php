@@ -16,11 +16,11 @@
 	 */
 
 	//file to load when action is found
+	//this file can be excluded as long as every action matches dsp_{ACTION}.php
 	switch ($flexaction['action']) {
 		case 'home':
 			$flexaction['actionfile'] = "dsp_homepage.php";
 			break;
 		default:
-			$flexaction['actionfile'] = "dsp_" . $flexaction['action'] . ".php" ;
 	}
 ?>
