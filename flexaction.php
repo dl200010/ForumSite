@@ -16,10 +16,10 @@
 	 */
 
 	//get the path that this file is in because everything else will deal off of this path.
-	$flexaction['flx_root_path'] = dirname(__FILE__);
-	if(file_exists($flexaction['flx_root_path'].'/flx_config.php')) {
+	$flexaction['root_path'] = dirname(__FILE__).'/';
+	if(file_exists($flexaction['root_path'].'/flx_config.php')) {
 		//include variables that are needed for flexaction
-		include $flexaction['flx_root_path'].'/flx_config.php';
+		include $flexaction['root_path'].'/flx_config.php';
 	}
 	else {
 		echo "Error Processing Request, config file not found.";
@@ -36,53 +36,47 @@
 	else {
 		//get link to redirect to with the url parameter of 'action' and redirect back to self with
 		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[SCRIPT_NAME]";
-		header("Location: " . $actual_link . "?action=" . $flexaction['flx_action_empty']);
+		header("Location: " . $actual_link . "?action=" . $flexaction['empty_action']);
 		die();
 	}
 
 	//include the root settings if it exists
-	if(file_exists($flexaction['flx_root_path'].'/flx_settings.php')) {
-		include $flexaction['flx_root_path'].'/flx_settings.php';
+	if(file_exists($flexaction['root_path'].'/flx_settings.php')) {
+		include $flexaction['root_path'].'/flx_settings.php';
 	}
 
 	//include root functions throw error when it does not exist
-	if(file_exists($flexaction['flx_root_path'].'/flx_functions.php')) {
-		include $flexaction['flx_root_path'].'/flx_functions.php';
-	}
-
-	if(!isset($flexaction['functionfolder'])){
-		$flexaction['functionfolder'] = "/" . $flexaction['function'] . "/" ;
+	$flexaction['function_folder'] = "/" . $flexaction['function'] . "/" ;
+	if(file_exists($flexaction['root_path'].'/flx_functions.php')) {
+		include $flexaction['root_path'].'/flx_functions.php';
 	}
 
 	//throw exception if the function being requested does not exist
 	if	(
-			$flexaction['functionfolder'] !== '/' &&
-			(!file_exists($flexaction['flx_root_path'].$flexaction['functionfolder']))
+			$flexaction['function_folder'] !== '/' &&
+			(!file_exists($flexaction['root_path'].$flexaction['function_folder']))
 		) {
 		echo "Error Processing Request, function not found.";
 		die();
 	}
 
 	//get the actions variable
-	if(file_exists($flexaction['flx_root_path'].$flexaction['functionfolder']."flx_actions.php")) {
-		include $flexaction['flx_root_path'].$flexaction['functionfolder']."flx_actions.php";
-	}
-
-	if(!isset($flexaction['actionfile'])) {
-		$flexaction['actionfile'] = "dsp_" . $flexaction['action'] . ".php" ;
+	$flexaction['action_file'] = "dsp_" . $flexaction['action'] . ".php" ;
+	if(file_exists($flexaction['root_path'].$flexaction['function_folder']."flx_actions.php")) {
+		include $flexaction['root_path'].$flexaction['function_folder']."flx_actions.php";
 	}
 
 	//throw exception if the function being requested does not exist
-	if	(!file_exists($flexaction['flx_root_path'].$flexaction['functionfolder'].$flexaction['actionfile'])) {
+	if	(!file_exists($flexaction['root_path'].$flexaction['function_folder'].$flexaction['action_file'])) {
 		echo "Error Processing Request, action not found.";
 		die();
 	}
 
 	//include root functions throw error when it does not exist
-	if(file_exists('flx_menu.php')) {
+	if(file_exists($flexaction['root_path'].$flexaction['menu_file'])) {
 		ob_start();
-		include 'flx_menu.php';
-		$flexaction['menu'] = ob_get_clean();
+		include $flexaction['root_path'].$flexaction['menu_file'];
+		$flexaction['menu_display'] = ob_get_clean();
 	}
 	else {
 		echo "Error Processing Request, menu file not found.";
@@ -90,26 +84,23 @@
 	}
 
 	//include the function settings if it exists
-	if(file_exists($flexaction['flx_root_path'].$flexaction['functionfolder'].'flx_settings.php')) {
-		include $flexaction['flx_root_path'].$flexaction['functionfolder'].'flx_settings.php';
+	if(file_exists($flexaction['root_path'].$flexaction['function_folder'].'flx_settings.php')) {
+		include $flexaction['root_path'].$flexaction['function_folder'].'flx_settings.php';
 	}
 
 	//go out and get content and save it to a variable
 	ob_start();
-	include $flexaction['flx_root_path'].$flexaction['functionfolder'].$flexaction['actionfile'];
-	$flexaction['layout'] = ob_get_clean();
+	include $flexaction['root_path'].$flexaction['function_folder'].$flexaction['action_file'];
+	$flexaction['page_display'] = ob_get_clean();
 
 	//go out and get content and save it to a variable
-	if(file_exists('flx_layout.php')) {
+	if(file_exists($flexaction['root_path'].$flexaction['layout_file'])) {
 		ob_start();
-		include 'flx_layout.php';
-		$totalpage = ob_get_clean();
+		include $flexaction['root_path'].$flexaction['layout_file'];
+		echo ob_get_clean();
 	}
 	else {
 		echo "Error Processing Request, layout file not found.";
 		die();
 	}
-
-	//display already built page
-	echo $totalpage;
 ?>

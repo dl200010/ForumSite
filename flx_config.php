@@ -18,5 +18,10 @@
 	//this file is configs used by flexaction
 
 	//this is the default action, in the case that it is missing from the URL
-	$flexaction['flx_action_empty'] = "home.home";
+	$flexaction['empty_action'] = "home.home";
+
+	//the files to pull in for the layout and menu.
+	//change these two inside the flx_settings if a different layout and menu is desired
+	$flexaction['layout_file'] = 'layout.php';
+	$flexaction['menu_file'] = 'menu.php';
 ?>
