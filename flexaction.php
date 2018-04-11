@@ -72,15 +72,12 @@
 		die();
 	}
 
+	$flexaction['menu_display'] = "";
 	//include root functions throw error when it does not exist
 	if(file_exists($flexaction['root_path'].$flexaction['menu_file'])) {
 		ob_start();
 		include $flexaction['root_path'].$flexaction['menu_file'];
 		$flexaction['menu_display'] = ob_get_clean();
-	}
-	else {
-		echo "Error Processing Request, menu file not found.";
-		die();
 	}
 
 	//include the function settings if it exists
