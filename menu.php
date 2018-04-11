@@ -17,12 +17,13 @@
 			<li>
 				<span class="opener">Submenu</span>
 				<ul>
-					<li><a href="?action=elements.elements">Lorem Dolor</a></li>
+					<li><a href="#">Lorem Dolor</a></li>
 					<li><a href="#">Ipsum Adipiscing</a></li>
 					<li><a href="#">Tempus Magna</a></li>
 					<li><a href="#">Feugiat Veroeros</a></li>
 				</ul>
 			</li>
+			<li><a href="?action=elements.elements">Elements</a></li>
 		</ul>
 	</nav>
 
