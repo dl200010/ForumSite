@@ -16,7 +16,7 @@
 	 */
 
 	/*
-	 *  use this file to add settings
+	 *  this file should be where session clean up and/or value caching should be done
 	 *  it can be left out as well
 	 */
 ?>

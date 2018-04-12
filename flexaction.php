@@ -40,6 +40,11 @@
 		die();
 	}
 
+	//file used to setup session if it exists
+	if(file_exists($flexaction['root_path']."/flx_session.php")) {
+		include $flexaction['root_path']."/flx_session.php";
+	}
+
 	//include the root settings if it exists
 	if(file_exists($flexaction['root_path'].'/flx_settings.php')) {
 		include $flexaction['root_path'].'/flx_settings.php';
@@ -89,6 +94,11 @@
 	ob_start();
 	include $flexaction['root_path'].$flexaction['function_folder'].$flexaction['action_file'];
 	$flexaction['page_display'] = ob_get_clean();
+
+	//last file to run before displaying and finishing used to save variables before finishing
+	if(file_exists($flexaction['root_path']."/flx_complete.php")) {
+		include $flexaction['root_path']."/flx_complete.php";
+	}
 
 	//go out and get content and save it to a variable
 	if(file_exists($flexaction['root_path'].$flexaction['layout_file'])) {
