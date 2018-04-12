@@ -72,17 +72,17 @@
 		die();
 	}
 
+	//include the function settings if it exists
+	if(file_exists($flexaction['root_path'].$flexaction['function_folder'].'flx_settings.php')) {
+		include $flexaction['root_path'].$flexaction['function_folder'].'flx_settings.php';
+	}
+
 	$flexaction['menu_display'] = "";
 	//include root functions throw error when it does not exist
 	if(file_exists($flexaction['root_path'].$flexaction['menu_file'])) {
 		ob_start();
 		include $flexaction['root_path'].$flexaction['menu_file'];
 		$flexaction['menu_display'] = ob_get_clean();
-	}
-
-	//include the function settings if it exists
-	if(file_exists($flexaction['root_path'].$flexaction['function_folder'].'flx_settings.php')) {
-		include $flexaction['root_path'].$flexaction['function_folder'].'flx_settings.php';
 	}
 
 	//go out and get content and save it to a variable
