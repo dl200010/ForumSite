@@ -20,5 +20,33 @@
 	 *  this file should be where session stuff is done for the entire site
 	 *  it can be left out as well
 	 */
-	$flexaction['tempglobalsetting'] = "tempvalue";
+
+	session_start();
+	$flexaction['keylength'] = 128;
+	$flexaction['cryptostrong'] = true;
+	$flexaction['SessionID'] = 'LID';
+	if ($_SERVER['HTTP_HOST'] == 'localhost') {
+		$flexaction['HTTPS'] = false;
+	}
+	else {
+		$flexaction['HTTPS'] = true;
+	}
+	// unset($_SESSION[$flexaction['SessionID']]);
+
+	if(!isset($_SESSION[$flexaction['SessionID']]) && !isset($_COOKIE[$flexaction['SessionID']])) {
+		$_SESSION[$flexaction['SessionID']] = bin2hex(openssl_random_pseudo_bytes($flexaction['keylength'], $flexaction['cryptostrong']));
+		setcookie($flexaction['SessionID'], $_SESSION[$flexaction['SessionID']], time()+(86400 * 30), "/", $_SERVER['HTTP_HOST'], $flexaction['HTTPS'], true);
+	}
+	else if(!isset($_SESSION[$flexaction['SessionID']]) && isset($_COOKIE[$flexaction['SessionID']])) {
+		$_SESSION[$flexaction['SessionID']] = $_COOKIE[$flexaction['SessionID']];
+	}
+	else if(isset($_SESSION[$flexaction['SessionID']]) && !isset($_COOKIE[$flexaction['SessionID']])) {
+		setcookie($flexaction['SessionID'], $_SESSION[$flexaction['SessionID']], time()+(86400 * 30), "/", $_SERVER['HTTP_HOST'], $flexaction['HTTPS'], true);
+	}
+	else if(isset($_SESSION[$flexaction['SessionID']]) && isset($_COOKIE[$flexaction['SessionID']]) && $_SESSION[$flexaction['SessionID']] != $_COOKIE[$flexaction['SessionID']]) {
+		$_SESSION[$flexaction['SessionID']] = $_COOKIE[$flexaction['SessionID']];
+	}
+
+	//Pull Data into $flexaction['session'] from database
+	//hash("sha512",)
 ?>
