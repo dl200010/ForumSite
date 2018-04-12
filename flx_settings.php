@@ -49,4 +49,6 @@
 
 	//Pull Data into $flexaction['session'] from database
 	//hash("sha512",)
+	//use the following line for saving and restoring data from database
+	//json_decode(json_encode($flexaction),true)
 ?>
