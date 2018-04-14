@@ -2066,7 +2066,7 @@
 /* Type */
 
 	body, input, select, textarea {
-		color: #f2f2f2;      /*text color*/
+		color: #28a428;      /*text color*/
 		background-color: #000000;
 		font-family: "Open Sans", sans-serif;
 		font-size: 13pt;
@@ -2104,7 +2104,7 @@
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		border-bottom: dotted 1px;
-		color: #f56a6a;       /*menu lines color*/
+		color: #f56a6a;
 		text-decoration: none;
 	}
 
@@ -2118,7 +2118,7 @@
 			}
 
 	strong, b {
-		color: #f2f2f2;
+		color: #28a428;
 		font-weight: 600;
 	}
 
@@ -2131,7 +2131,7 @@
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #f2f2f2;
+		color: #28a428;
 		font-family: "Roboto Slab", serif;
 		font-weight: 700;
 		line-height: 1.5;
@@ -2278,7 +2278,7 @@
 	}
 
 	header.major > :last-child {
-		border-bottom: solid 3px #f56a6a;
+		border-bottom: solid 3px #800000;
 		display: inline-block;
 		margin: 0 0 2em 0;
 		padding: 0 0.75em 0.5em 0;
@@ -2295,7 +2295,7 @@
 	}
 
 	label {
-		color: #f2f2f2;
+		color: #28a428;
 		display: block;
 		font-size: 0.9em;
 		font-weight: 600;
@@ -2413,7 +2413,7 @@
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #f2f2f2; /* text color */
+			color: #28a428; /* text color */
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;
@@ -2453,7 +2453,7 @@
 		input[type="radio"]:checked + label:before {
 			background: #333333;
 			border-color: #838383;
-			color: #f2f2f2;
+			color: #28a428;
 			content: '\f00c';
 		}
 
@@ -2472,27 +2472,27 @@
 	}
 
 	::-webkit-input-placeholder {
-		color: #9fa3a6 !important;
+		color: #1e7b1e !important;
 		opacity: 1.0;
 	}
 
 	:-moz-placeholder {
-		color: #9fa3a6 !important;
+		color: #1e7b1e !important;
 		opacity: 1.0;
 	}
 
 	::-moz-placeholder {
-		color: #9fa3a6 !important;
+		color: #1e7b1e !important;
 		opacity: 1.0;
 	}
 
 	:-ms-input-placeholder {
-		color: #9fa3a6 !important;
+		color: #1e7b1e !important;
 		opacity: 1.0;
 	}
 
 	.formerize-placeholder {
-		color: #9fa3a6 !important;
+		color: #1e7b1e !important;
 		opacity: 1.0;
 	}
 
@@ -2693,7 +2693,7 @@
 				}
 
 				ul.contact li:before {
-					color: #f56a6a;
+					color: #800000;
 					display: inline-block;
 					font-size: 1.5em;
 					height: 1.125em;
@@ -2817,8 +2817,8 @@
 				}
 
 					ul.pagination li > .page.active {
-						background-color: #f56a6a;
-						color: #ffffff !important;
+						background-color: #800000;
+						color: #bfbfbf !important;
 					}
 
 						ul.pagination li > .page.active:hover {
@@ -2890,7 +2890,7 @@
 		}
 
 		table th {
-			color: #f2f2f2;
+			color: #28a428;
 			font-size: 0.9em;
 			font-weight: 600;
 			padding: 0 0.75em 0.75em 0.75em;
@@ -2949,8 +2949,8 @@
 		background-color: transparent;
 		border-radius: 0.375em;
 		border: 0;
-		box-shadow: inset 0 0 0 2px #f56a6a;
-		color: #f56a6a !important;
+		box-shadow: inset 0 0 0 2px #800000;
+		color: #800000 !important;
 		cursor: pointer;
 		display: inline-block;
 		font-family: "Roboto Slab", serif;
@@ -3023,9 +3023,9 @@
 		input[type="button"].special,
 		button.special,
 		.button.special {
-			background-color: #f56a6a;
+			background-color: #800000;
 			box-shadow: none;
-			color: #ffffff !important;
+			color: #bfbfbf !important;
 		}
 
 			input[type="submit"].special:hover,
@@ -3143,7 +3143,7 @@
 			}
 
 				.features article .icon:before {
-					color: #f56a6a;
+					color: #800000;
 					font-size: 2.75rem;
 					position: relative;
 					top: 0.05em;
@@ -3788,7 +3788,7 @@
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		border-bottom: solid 5px #f56a6a;
+		border-bottom: solid 5px #800000;
 		padding: 6em 0 1em 0;
 		position: relative;
 	}
@@ -3963,7 +3963,7 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-		color: #f2f2f2;
+		color: #28a428;
 		font-family: "Roboto Slab", serif;
 		font-family: 400;
 		letter-spacing: 0.075em;
@@ -3983,7 +3983,7 @@
 		}
 
 			#menu ul a:hover, #menu ul span:hover {
-				color: #f56a6a;
+				color: #800000;
 			}
 
 			#menu ul a.opener, #menu ul span.opener {
@@ -4010,14 +4010,14 @@
 					-webkit-transition: color 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 					-ms-transition: color 0.2s ease-in-out, -ms-transform 0.2s ease-in-out;
 					transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
-					color: #9fa3a6;
+					color: #1e7b1e;
 					content: '\f078';
 					position: absolute;
 					right: 0;
 				}
 
 				#menu ul a.opener:hover:before, #menu ul span.opener:hover:before {
-					color: #f56a6a;
+					color: #800000;
 				}
 
 				#menu ul a.opener.active + ul, #menu ul span.opener.active + ul {
@@ -4038,7 +4038,7 @@
 	}
 
 		#menu > ul > li > ul {
-			color: #9fa3a6;
+			color: #1e7b1e;
 			display: none;
 			margin: 0.5em 0 1.5em 0;
 			padding-left: 1em;
