@@ -19,9 +19,10 @@
 	 *  this file should be where session start up stuff is done
 	 *  it can be left out as well
 	 */
+	//error_reporting(E_ERROR);
 
 	session_start();
-	$flexaction['keylength'] = 128;
+	$flexaction['SessionID_length'] = 128;
 	$flexaction['cryptostrong'] = true;
 	$flexaction['SessionID'] = 'LID';
 	if ($_SERVER['HTTP_HOST'] == 'localhost') {
@@ -32,8 +33,9 @@
 	}
 	// unset($_SESSION[$flexaction['SessionID']]);
 
+	//figuring out the proper session ID
 	if(!isset($_SESSION[$flexaction['SessionID']]) && !isset($_COOKIE[$flexaction['SessionID']])) {
-		$_SESSION[$flexaction['SessionID']] = bin2hex(openssl_random_pseudo_bytes($flexaction['keylength'], $flexaction['cryptostrong']));
+		$_SESSION[$flexaction['SessionID']] = bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong']));
 		setcookie($flexaction['SessionID'], $_SESSION[$flexaction['SessionID']], time()+(86400 * 30), "/", $_SERVER['HTTP_HOST'], $flexaction['HTTPS'], true);
 	}
 	else if(!isset($_SESSION[$flexaction['SessionID']]) && isset($_COOKIE[$flexaction['SessionID']])) {
@@ -46,8 +48,20 @@
 		$_SESSION[$flexaction['SessionID']] = $_COOKIE[$flexaction['SessionID']];
 	}
 
-	//Pull Data into $flexaction['session'] from database
-	//hash("sha512",)
-	//use the following line for saving and restoring data from database
-	//json_decode(json_encode($flexaction),true)
+	// Create connection
+	include 'inc_mysql_settings.php';
+	$flexaction['dbconnection'] = new mysqli($mysql['serverport'], $mysql['username'], $mysql['pass'], $mysql['dbname']);
+
+	// Check connection
+	if ($flexaction['dbconnection']->connect_error) {die("Datbase connection failed.");}
+
+	// Get Session Cache
+	$SessionCacheGet = $flexaction['dbconnection']->query(
+				"SELECT * " .
+				"FROM Session_Cache " .
+				"WHERE Hashed_Session_ID = '" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'");
+
+	if ($SessionCacheGet->num_rows == 1){
+		$flexaction['session'] = json_decode($SessionCacheGet->fetch_assoc()['Session_Data'],true);
+	}
 ?>

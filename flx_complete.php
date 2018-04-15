@@ -19,4 +19,23 @@
 	 *  this file should be where session clean up and/or value caching should be done
 	 *  it can be left out as well
 	 */
+	// Save Session Cache
+	if (isset($flexaction['session']) && is_array($flexaction['session'])) {
+		$SessionCacheSave = $flexaction['dbconnection']->query(
+					"UPDATE Session_Cache " .
+					"SET Session_Data = '" . json_encode($flexaction['session']) . "' " .
+					"WHERE Hashed_Session_ID = '" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'");
+
+		if ($flexaction['dbconnection']->affected_rows == 0) {
+			$SessionCacheSave = $flexaction['dbconnection']->query(
+						"INSERT INTO Session_Cache " .
+						"(Session_Data, Hashed_Session_ID) " .
+						"VALUES " .
+						"( " .
+							"'" . json_encode($flexaction['session']) . "', " .
+							"'" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "' " .
+						")");
+		}
+	}
+	$flexaction['dbconnection']->close();
 ?>
