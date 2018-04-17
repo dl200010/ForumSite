@@ -24,6 +24,16 @@
 	session_start();
 	$flexaction['SessionID_length'] = 128;
 	$flexaction['cryptostrong'] = true;
+// echo '<pre>';
+// $password = 'thisisabadpasssword';
+// $hash_password = hash('sha512',hash('sha256',$password).$password.hash('md5',$password));
+// var_dump($hash_password);
+// echo '<br /><br />';
+// $LID = hash('sha512',$hash_password.session_id().$_SERVER["REMOTE_ADDR"].bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
+// var_dump($LID);
+// var_dump(hash('sha512',hash('sha256',$LID).$LID.hash('md5',$LID)));
+// echo '</pre>';
+// die();
 	$flexaction['SessionID'] = 'LID';
 	if ($_SERVER['HTTP_HOST'] == 'localhost') {
 		$flexaction['HTTPS'] = false;
