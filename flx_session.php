@@ -29,9 +29,11 @@
 // var_dump($password);
 // var_dump(hash('sha256',$password));
 // var_dump(hash('sha384',$password));
-// var_dump(hash('sha512',$password));
-// var_dump(hash('sha256',$password).hash('sha384',$password).hash('sha512',$password));
-// $hash_password = hash('sha512',hash('sha256',$password).hash('sha384',$password).hash('sha512',$password));
+// $salt = bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong']));
+// var_dump($salt);
+// var_dump(hash('sha512',$salt));
+// var_dump(hash('sha256',$password).hash('sha384',$password).hash('sha512',$salt));
+// $hash_password = hash('sha512',hash('sha256',$password).hash('sha384',$password).hash('sha512',$salt));
 // var_dump($hash_password);
 // echo '<br /><br />';
 // $LID = hash('sha512',hash('sha256',$hash_password).session_id().hash('sha384',$_SERVER["REMOTE_ADDR"]).bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
