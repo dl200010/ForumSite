@@ -16,14 +16,14 @@
 	 */
 
 	/*
-	 *	Copy file to inc_mysql_settings.php
-	 *	Put your login info for mysql in there
-	 *	inc_mysql_settings.php is in .gitignore
-	 *	to prevent from saving mysql login
+	 *	Need an INI file located anywhere outside the wwwroot.
+	 *  Change the path below if need be.
+	 *  Using the same format as php.ini. Example:
+	 *		serverport = "localhost:3306"
+	 *		username = "username"
+	 *		pass = "password"
+	 *		dbname = "databasename"
 	 */
 
-	$mysql['serverport'] = "localhost:3306";
-	$mysql['username'] = "username";
-	$mysql['pass'] = "password";
-	$mysql['dbname'] = "databasename";
+	$mysql = parse_ini_file("C:\inetpub\forumsite_mysql.ini");
 ?>
