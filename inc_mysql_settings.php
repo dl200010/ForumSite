@@ -25,5 +25,5 @@
 	 *		dbname = "databasename"
 	 */
 
-	$mysql = parse_ini_file("C:\inetpub\forumsite_mysql.ini");
+	$mysql = parse_ini_file("c:/inetpub/forumsite_mysql.ini");
 ?>
