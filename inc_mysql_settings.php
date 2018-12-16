@@ -16,14 +16,18 @@
 	 */
 
 	/*
-	 *	Need an INI file located anywhere outside the wwwroot.
+	 *  Need an INI file located anywhere outside the wwwroot.
 	 *  Change the path below if need be.
+	 *  File name below shows using the host name just before the domain
+	 *  as part of the file name.
+	 *  "this.domain.com" becomes "this_mysql.ini"
+	 *  "this.is.a.host.domain.com" becomes "this.is.a.host_mysql.ini"
 	 *  Using the same format as php.ini. Example:
-	 *		serverport = "localhost:3306"
-	 *		username = "username"
-	 *		pass = "password"
-	 *		dbname = "databasename"
+	 *  	serverport = "localhost:3306"
+	 *  	username = "username"
+	 *  	pass = "password"
+	 *  	dbname = "databasename"
 	 */
-
-	$mysql = parse_ini_file("c:/inetpub/forumsite_mysql.ini");
+	$URL_HostName = preg_replace ( '/^([a-z0-9\.]+?)\.[^\.]*?\.[^\.]+$/', "$1", strtolower($_SERVER["HTTP_HOST"]));
+	$mysql = parse_ini_file("c:/inetpub/".$URL_HostName."_mysql.ini");
 ?>
