@@ -36,5 +36,13 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
 
+		<?php
+			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
+				echo $flexaction['page_js_files'] . "\n";
+			}
+			if (isset($flexaction['page_javascript']) && $flexaction['page_javascript'] != "") {
+				echo "<script type='text/javascript'>" . $flexaction['page_javascript'] . "</script>\n";
+			}
+		?>
 	</body>
 </html>

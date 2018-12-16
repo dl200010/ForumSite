@@ -22,6 +22,8 @@
 	//error_reporting(E_ERROR);
 
 	session_start();
+	$flexaction['page_javascript'] = "";
+	$flexaction['page_js_files'] = "";
 	$flexaction['SessionID_length'] = 128;
 	$flexaction['cryptostrong'] = true;
 // echo '<pre>';
@@ -80,5 +82,10 @@
 
 	if ($SessionCacheGet->num_rows == 1){
 		$flexaction['session'] = json_decode($SessionCacheGet->fetch_assoc()['Session_Data'],true);
+	}
+
+	if (!isset($flexaction['session']) || !isset($flexaction['session']['User_PK'])) {
+		$flexaction['function'] = "login";
+		$flexaction['action'] = "login";
 	}
 ?>
