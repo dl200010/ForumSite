@@ -19,7 +19,6 @@
 	 *  this file should be where session start up stuff is done
 	 *  it can be left out as well
 	 */
-	//error_reporting(E_ERROR);
 
 	session_start();
 	$flexaction['page_javascript'] = "";
@@ -29,19 +28,10 @@
 // echo '<pre>';
 // $password = 'thisisabadpassword';
 // var_dump($password);
-// var_dump(hash('sha256',$password));
-// var_dump(hash('sha384',$password));
-// $salt = bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong']));
+// $salt = hash('sha512',bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
 // var_dump($salt);
-// var_dump(hash('sha512',$salt));
-// var_dump(hash('sha256',$password).hash('sha384',$password).hash('sha512',$salt));
-// $hash_password = hash('sha512',hash('sha256',$password).hash('sha384',$password).hash('sha512',$salt));
+// $hash_password = hash('sha512',$password.$salt);
 // var_dump($hash_password);
-// echo '<br /><br />';
-// $LID = hash('sha512',hash('sha256',$hash_password).session_id().hash('sha384',$_SERVER["REMOTE_ADDR"]).bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
-// var_dump($LID);
-// var_dump(hash('sha512',hash('sha256',$LID).hash('sha384',$LID).hash('sha512',$LID)));
-// echo '</pre>';
 // die();
 	$flexaction['SessionID'] = 'LID';
 	if ($_SERVER['HTTP_HOST'] == 'localhost') {
