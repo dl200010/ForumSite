@@ -75,7 +75,9 @@
 	}
 
 	if (!isset($flexaction['session']) || !isset($flexaction['session']['User_PK'])) {
-		$flexaction['function'] = "login";
-		$flexaction['action'] = "login";
+		if($flexaction['function'] != "elements") {
+			$flexaction['function'] = "login";
+			$flexaction['action'] = "login";
+		}
 	}
 ?>
