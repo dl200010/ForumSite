@@ -37,5 +37,10 @@
 						")");
 		}
 	}
+	else {
+		$SessionCacheDelete = $flexaction['dbconnection']->query(
+					"DELETE FROM Session_Cache " .
+					"WHERE Hashed_Session_ID = '" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'");
+	}
 	$flexaction['dbconnection']->close();
 ?>
