@@ -33,7 +33,7 @@
 				<li>
 					<span class="opener">My Account</span>
 					<ul>
-						<li><a href="?action=login.logout">Logout</a></li>
+						<li><a href="?action=account.manage">Manage</a></li>
 					</ul>
 				</li>
 				<?php if ($flexaction['session']["User"]["AdminType"] == "Admin") { ?>
@@ -44,6 +44,7 @@
 						</ul>
 					</li>
 				<?php } ?>
+				<li><a href="?action=login.logout">Logout</a></li>
 			<?php } ?>
 		</ul>
 	</nav>
