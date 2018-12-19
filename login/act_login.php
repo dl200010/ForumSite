@@ -3,7 +3,7 @@
 	unset($flexaction['session']);
 	if (isset($_POST["email"]) && $_POST["email"] != "" && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 		$GetUserData = $flexaction['dbconnection']->query("
-				SELECT *
+				SELECT email, password1, salt1, Users_PK, AdminType
 				FROM users
 				WHERE email = '" . $flexaction['dbconnection']->real_escape_string($_POST["email"]) . "'
 		");
