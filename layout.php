@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<link rel="stylesheet" href="/assets/lobibox/css/Lobibox.min.css"/>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -35,13 +36,17 @@
 		<script src="assets/js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
+		<script src="/assets/lobibox/js/Lobibox.min.js"></script>
+		<!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
+		<!-- <script src="/assets/lobibox/js/messageboxes.min.js"></script> -->
+		<!-- <script src="/assets/lobibox/js/notifications.min.js"></script> -->
 
 		<?php
 			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
 				echo $flexaction['page_js_files'] . "\n";
 			}
 			if (isset($flexaction['page_javascript']) && $flexaction['page_javascript'] != "") {
-				echo "<script type='text/javascript'>" . $flexaction['page_javascript'] . "</script>\n";
+				echo "<script type='text/javascript'>$(document).ready(function() {" . $flexaction['page_javascript'] . "});</script>\n";
 			}
 		?>
 	</body>

@@ -1,5 +1,6 @@
 <?php
 	if (isset($_POST["Login"])) {
+		include 'act_login.php';
 	}
 ?>
 
