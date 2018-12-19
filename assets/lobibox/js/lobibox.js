@@ -1,6 +1,6 @@
-//Author      : @arboshiki
+//Author      : @
 //create lobibox object
-var Lobibox = Lobibox || {};
+var Lobibox = Lobibox || {};arboshiki
 (function () {
 
     Lobibox.counter = 0;
@@ -1488,7 +1488,7 @@ var Lobibox = Lobibox || {};
         title: true,                // Title of notification. If you do not include the title in options it will automatically takes its value 
         //from Lobibox.notify.OPTIONS object depending of the type of the notifications or set custom string. Set this false to disable title
         size: 'normal',             // normal, mini, large
-        soundPath: 'sounds/',   // The folder path where sounds are located
+        soundPath: '/assets/lobibox/',   // The folder path where sounds are located
         soundExt: '.ogg',           // Default extension for all sounds
         showClass: 'fadeInDown',    // Show animation class.
         hideClass: 'zoomOut',       // Hide animation class.
