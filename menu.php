@@ -40,11 +40,13 @@
 					<li>
 						<span class="opener">Administration</span>
 						<ul>
-							<li><a href="#">Users</a></li>
+							<li><a href="?action=admin.users">Users</a></li>
 						</ul>
 					</li>
 				<?php } ?>
 				<li><a href="?action=login.logout">Logout</a></li>
+			<?php } else { ?>
+				<li><a href="?action=login.login">Login</a></li>
 			<?php } ?>
 		</ul>
 	</nav>
