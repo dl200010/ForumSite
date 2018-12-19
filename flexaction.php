@@ -27,8 +27,9 @@
 		die();
 	}
 
-	$flexaction['gotoEmptyAction'] = function ($flexaction) {
+	$flexaction['gotoEmptyAction'] = function () {
 		//get link to redirect to with the url parameter of 'action' and redirect back to self with
+		global $flexaction;
 		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[SCRIPT_NAME]";
 		header("Location: " . $actual_link . "?action=" . $flexaction['empty_action']);
 		die();
@@ -42,7 +43,7 @@
 		$flexaction['action'] = preg_replace("/^(.*?)\.(.*?)$/","$2",$_GET['action']);
 	}
 	else {
-		$flexaction['gotoEmptyAction']($flexaction);
+		$flexaction['gotoEmptyAction']();
 	}
 
 	//file used to setup session if it exists
