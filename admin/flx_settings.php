@@ -20,6 +20,6 @@
 	 *  it can be left out as well
 	 */
 	if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"]) || $flexaction['session']["User"]["AdminType"] != "Admin") {
-		$flexaction['gotoEmptyAction']($flexaction);
+		$flexaction['gotoEmptyAction']();
 	}
 ?>
