@@ -17,6 +17,7 @@
 
 	//get the path that this file is in because everything else will deal off of this path.
 	$flexaction['root_path'] = dirname(__FILE__).'/';
+
 	if(file_exists($flexaction['root_path'].'/flx_config.php')) {
 		//include variables that are needed for flexaction
 		include $flexaction['root_path'].'/flx_config.php';
@@ -26,6 +27,13 @@
 		die();
 	}
 
+	$flexaction['gotoEmptyAction'] = function ($flexaction) {
+		//get link to redirect to with the url parameter of 'action' and redirect back to self with
+		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[SCRIPT_NAME]";
+		header("Location: " . $actual_link . "?action=" . $flexaction['empty_action']);
+		die();
+	};
+
 	//check to see if the action exists and that it contains a period
 	if(isset($_GET['action']) && strpos($_GET['action'],".") !== false)
 	{
@@ -34,10 +42,7 @@
 		$flexaction['action'] = preg_replace("/^(.*?)\.(.*?)$/","$2",$_GET['action']);
 	}
 	else {
-		//get link to redirect to with the url parameter of 'action' and redirect back to self with
-		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[SCRIPT_NAME]";
-		header("Location: " . $actual_link . "?action=" . $flexaction['empty_action']);
-		die();
+		$flexaction['gotoEmptyAction']($flexaction);
 	}
 
 	//file used to setup session if it exists
