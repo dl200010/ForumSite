@@ -24,6 +24,11 @@
 				</ul>
 			</li>
 			<li><a href="?action=elements.elements">Elements</a></li>
+			<?php
+				if (isset($flexaction['session']) && isset($flexaction['session']["User"]["PK"])) {
+					echo '<li><a href="?action=login.logout">Logout</a></li>';
+				}		
+			?>
 		</ul>
 	</nav>
 

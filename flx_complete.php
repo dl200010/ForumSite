@@ -30,11 +30,12 @@
 		if ($flexaction['dbconnection']->affected_rows == 0) {
 			$SessionCacheSave = $flexaction['dbconnection']->query("
 					INSERT INTO Session_Cache
-					(Session_Data, Hashed_Session_ID)
+					(Session_Data, Hashed_Session_ID, Users_PK)
 					VALUES
 					(
 						'" . json_encode($flexaction['session']) . "',
-						'" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'
+						'" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "',
+						" . $flexaction['session']["User"]["PK"] . "
 					)
 				");
 		}
