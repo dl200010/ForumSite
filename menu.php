@@ -15,11 +15,6 @@
 	 *  limitations under the License.
 	 */
 ?>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <div class="inner">
 
 	<!-- Search
@@ -31,26 +26,25 @@
 
 	<!-- Menu -->
 	<nav id="menu">
-		<header class="major">
-			<h2>Menu</h2>
-		</header>
 		<ul>
 			<li><a href="?action=home.home">Homepage</a></li>
-			<li>
-				<span class="opener">Submenu</span>
-				<ul>
-					<li><a href="#">Lorem Dolor</a></li>
-					<li><a href="#">Ipsum Adipiscing</a></li>
-					<li><a href="#">Tempus Magna</a></li>
-					<li><a href="#">Feugiat Veroeros</a></li>
-				</ul>
-			</li>
 			<li><a href="?action=elements.elements">Elements</a></li>
-			<?php
-				if (isset($flexaction['session']) && isset($flexaction['session']["User"]["PK"])) {
-					echo '<li><a href="?action=login.logout">Logout</a></li>';
-				}		
-			?>
+			<?php if (isset($flexaction['session']) && isset($flexaction['session']["User"]["PK"])) { ?>
+				<li>
+					<span class="opener">My Account</span>
+					<ul>
+						<li><a href="?action=login.logout">Logout</a></li>
+					</ul>
+				</li>
+				<?php if ($flexaction['session']["User"]["AdminType"] == "Admin") { ?>
+					<li>
+						<span class="opener">Administration</span>
+						<ul>
+							<li><a href="#">Users</a></li>
+						</ul>
+					</li>
+				<?php } ?>
+			<?php } ?>
 		</ul>
 	</nav>
 
