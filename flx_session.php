@@ -66,7 +66,7 @@
 
 	// Get Session Cache
 	$SessionCacheGet = $flexaction['dbconnection']->query("
-			SELECT *
+			SELECT Session_Data, Hashed_Session_ID, Users_PK
 			FROM Session_Cache 
 			WHERE Hashed_Session_ID = '" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'
 		");
