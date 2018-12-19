@@ -65,10 +65,11 @@
 	if ($flexaction['dbconnection']->connect_error) {die("Datbase connection failed.");}
 
 	// Get Session Cache
-	$SessionCacheGet = $flexaction['dbconnection']->query(
-				"SELECT * " .
-				"FROM Session_Cache " .
-				"WHERE Hashed_Session_ID = '" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'");
+	$SessionCacheGet = $flexaction['dbconnection']->query("
+			SELECT *
+			FROM Session_Cache 
+			WHERE Hashed_Session_ID = '" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'
+		");
 
 	if ($SessionCacheGet->num_rows == 1){
 		$flexaction['session'] = json_decode($SessionCacheGet->fetch_assoc()['Session_Data'],true);
