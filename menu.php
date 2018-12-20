@@ -33,6 +33,7 @@
 				<li>
 					<span class="opener">My Account</span>
 					<ul>
+						<li><a href="?action=account.password">Change Password</a></li>
 						<li><a href="?action=account.manage">Manage</a></li>
 					</ul>
 				</li>
