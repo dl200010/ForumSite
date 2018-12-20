@@ -30,7 +30,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" href="/assets/lobibox/css/Lobibox.min.css"/>
+		<link rel="stylesheet" href="/assets/lobibox/1.2.7/css/Lobibox.min.css"/>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -48,15 +48,15 @@
 		</div>
 
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/jquery/3.3.1/js/jquery.min.js"></script>
 		<script src="assets/js/skel.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
-		<script src="/assets/lobibox/js/Lobibox.min.js"></script>
+		<script src="/assets/lobibox/1.2.7/js/Lobibox.min.js"></script>
 		<!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
-		<!-- <script src="/assets/lobibox/js/messageboxes.min.js"></script> -->
-		<!-- <script src="/assets/lobibox/js/notifications.min.js"></script> -->
+		<!-- <script src="/assets/lobibox/1.2.7/js/messageboxes.min.js"></script> -->
+		<!-- <script src="/assets/lobibox/1.2.7/js/notifications.min.js"></script> -->
 
 		<?php
 			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
