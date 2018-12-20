@@ -16,7 +16,7 @@
 	 */
 ?>
 <header id="header">
-	The Forums
+	<h2>The Forums</h2>
 </header>
 <section>
 	This is the home page for home.

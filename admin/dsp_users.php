@@ -16,8 +16,8 @@
 	 */
 ?>
 <header id="header">
-	Manage Users.
+	<h2>Manage Users</h2>
 </header>
 <section>
-	Manage Users.
+	Manage Users
 </section>

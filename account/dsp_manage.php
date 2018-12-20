@@ -16,8 +16,8 @@
 	 */
 ?>
 <header id="header">
-	Manage my account.
+	<h2>Manage my account</h2>
 </header>
 <section>
-	Manage my account.
+	Manage my account
 </section>
