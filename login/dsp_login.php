@@ -28,11 +28,13 @@
 		<form method="post">
 			<div class="row uniform">
 				<div class="6u$ 12u$(xsmall)">
+					<label for="email">Email</label>
 					<input type="email" name="email" id="email" placeholder="Email" />
 				</div>
 			</div>
 			<div class="row uniform">
 				<div class="6u 12u$(xsmall)">
+					<label for="password">Password</label>
 					<input type="password" name="password" id="password" placeholder="password" />
 				</div>
 			</div>
