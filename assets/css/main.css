@@ -4057,3 +4057,8 @@
 			margin-top: 0;
 			padding-top: 0;
 		}
+
+/* add in classes */
+.error {
+	color:#ff3333;
+}
