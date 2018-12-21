@@ -14,7 +14,12 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-	
+
 	$ErrorMessages = "";
+	$GetUserData = $flexaction['dbconnection']->query("
+			SELECT Users_PK, password1, salt1, password2, salt2, password3, salt3, password4, salt4, password5, salt5
+			FROM users
+			WHERE Users_PK = {$flexaction['session']["User"]["PK"]}
+	");
 	include $flexaction['root_path'].'/inc_error_messages.php';
 ?>
