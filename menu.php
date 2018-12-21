@@ -27,14 +27,6 @@
 		</ul>
 	</nav>
 
-	<!-- Section -->
-	<section>
-		<header class="major">
-			<h2>Server</h2>
-		</header>
-		<p><a href="https://***REMOVED***/" target="***REMOVED***">https://***REMOVED***/</a></p>
-	</section>
-
 	<!-- Footer -->
 	<footer id="footer">
 		<p class="copyright">
