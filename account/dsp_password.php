@@ -15,7 +15,7 @@
 	 *  limitations under the License.
 	 */
 
-	if (isset($_POST["Login"])) {
+	if (isset($_POST["ChangePassword"])) {
 		include 'act_password.php';
 	}
 ?>
@@ -45,7 +45,7 @@
 		<div class="row uniform align-center">
 			<div class="6u 12u$(xsmall)">
 				<ul class="actions">
-					<li><input type="submit" name="Change Password" value="Change Password" class="special" /></li>
+					<li><input type="submit" name="ChangePassword" value="Change Password" class="special" /></li>
 				</ul>
 			</div>
 		</div>
