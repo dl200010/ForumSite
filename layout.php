@@ -60,11 +60,12 @@
 
 		<?php
 			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
-				echo $flexaction['page_js_files'] . "\n";
+				echo $flexaction['page_js_files'];
 			}
 			if (isset($flexaction['page_javascript']) && $flexaction['page_javascript'] != "") {
-				echo "<script type='text/javascript'>$(document).ready(function() {" . $flexaction['page_javascript'] . "});</script>\n";
+				echo "<script type='text/javascript'>$(document).ready(function() {" . $flexaction['page_javascript'] . "});</script>";
 			}
 		?>
+
 	</body>
 </html>
