@@ -14,7 +14,7 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-	
+
 	if (isset($_POST["Login"])) {
 		include 'act_password.php';
 	}
@@ -23,33 +23,62 @@
 	<h2>Change Password</h2>
 </header>
 <section>
-	<div class="6u$ 12u$(medium)">
-		<form method="post">
-			<div class="row uniform">
-				<div class="6u 12u$(xsmall)">
-					<label for="currentpassword">Current Password</label>
-					<input type="password" name="currentpassword" id="currentpassword" placeholder="current password" />
-				</div>
+	<form method="post" id="PasswordChangeForm">
+		<div class="row uniform">
+			<div class="6u 12u$(xsmall)">
+				<label for="currentpassword">Current Password</label>
+				<input type="password" name="currentpassword" id="currentpassword" placeholder="current password" />
 			</div>
-			<div class="row uniform">
-				<div class="6u 12u$(xsmall)">
-					<label for="newpassword">New Password</label>
-					<input type="password" name="newpassword" id="newpassword" placeholder="new password" />
-				</div>
+		</div>
+		<div class="row uniform">
+			<div class="6u 12u$(xsmall)">
+				<label for="newpassword">New Password</label>
+				<input type="password" name="newpassword" id="newpassword" placeholder="new password" />
 			</div>
-			<div class="row uniform">
-				<div class="6u 12u$(xsmall)">
-					<label for="confirmpassword">Confirm New Password</label>
-					<input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirm new password" />
-				</div>
+		</div>
+		<div class="row uniform">
+			<div class="6u 12u$(xsmall)">
+				<label for="confirmpassword">Confirm New Password</label>
+				<input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirm new password" />
 			</div>
-			<div class="row uniform align-center">
-				<div class="6u 12u$(xsmall)">
-					<ul class="actions">
-						<li><input type="submit" name="Change Password" value="Change Password" class="special" /></li>
-					</ul>
-				</div>
+		</div>
+		<div class="row uniform align-center">
+			<div class="6u 12u$(xsmall)">
+				<ul class="actions">
+					<li><input type="submit" name="Change Password" value="Change Password" class="special" /></li>
+				</ul>
 			</div>
-		</form>
-	</div>
+		</div>
+	</form>
 </section>
+
+<?php
+	$flexaction['page_javascript'] .= "
+		$('#PasswordChangeForm').validate({
+			rules: {
+				currentpassword: 'required',
+				newpassword: {
+					required: true,
+					minlength: 8
+				},
+				confirmpassword: {
+					required: true,
+					minlength: 8,
+					equalTo: '#newpassword'
+				}
+			},
+			messages: {
+				currentpassword: 'Please enter your current password',
+				newpassword: {
+					required: 'Please provide a new password',
+					minlength: 'The new password must be at least 8 characters long'
+				},
+				confirmpassword: {
+
+					required: 'Please confirm the new password',
+					equalTo: 'Please enter the same password as above'
+				}
+			}
+		});
+	";
+?>

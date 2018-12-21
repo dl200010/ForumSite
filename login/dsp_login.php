@@ -14,7 +14,7 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-	
+
 	if (isset($_POST["Login"])) {
 		include 'act_login.php';
 	}
@@ -24,27 +24,40 @@
 	<h2>Login</h2>
 </header>
 <section>
-	<div class="6u$ 12u$(medium)">
-		<form method="post">
-			<div class="row uniform">
-				<div class="6u$ 12u$(xsmall)">
-					<label for="email">Email</label>
-					<input type="email" name="email" id="email" placeholder="Email" />
-				</div>
+	<form method="post" id="LoginForm">
+		<div class="row uniform">
+			<div class="6u$ 12u$(xsmall)">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email" placeholder="Email" />
 			</div>
-			<div class="row uniform">
-				<div class="6u 12u$(xsmall)">
-					<label for="password">Password</label>
-					<input type="password" name="password" id="password" placeholder="password" />
-				</div>
+		</div>
+		<div class="row uniform">
+			<div class="6u 12u$(xsmall)">
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" placeholder="password" />
 			</div>
-			<div class="row uniform align-center">
-				<div class="6u 12u$(xsmall)">
-					<ul class="actions">
-						<li><input type="submit" name="Login" value="Login" class="special" /></li>
-					</ul>
-				</div>
+		</div>
+		<div class="row uniform align-center">
+			<div class="6u 12u$(xsmall)">
+				<ul class="actions">
+					<li><input type="submit" name="Login" value="Login" class="special" /></li>
+				</ul>
 			</div>
-		</form>
-	</div>
+		</div>
+	</form>
 </section>
+
+<?php
+	$flexaction['page_javascript'] .= "
+		$('#LoginForm').validate({
+			rules: {
+				email: 'required',
+				password: 'required'
+			},
+			messages: {
+				email: 'Please enter your email',
+				password: 'Please enter your password'
+			}
+		});
+	";
+?>

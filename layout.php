@@ -57,6 +57,7 @@
 		<!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
 		<!-- <script src="/assets/lobibox/1.2.7/js/messageboxes.min.js"></script> -->
 		<!-- <script src="/assets/lobibox/1.2.7/js/notifications.min.js"></script> -->
+		<script src="/assets/jquery-validation/1.19.0/jquery.validate.min.js"></script>
 
 		<?php
 			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
