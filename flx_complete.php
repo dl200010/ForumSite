@@ -20,11 +20,13 @@
 	 *  it can be left out as well
 	 */
 	// Save Session Cache
+	$SessionIDHash = hash('sha512',$_SESSION[$flexaction['SessionID']]);
 	if (isset($flexaction['session']) && is_array($flexaction['session'])) {
+		$SessionJSON = json_encode($flexaction['session']);
 		$SessionCacheSave = $flexaction['dbconnection']->query("
 				UPDATE Session_Cache
-				SET Session_Data = '" . json_encode($flexaction['session']) . "'
-				WHERE Hashed_Session_ID = '" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'
+				SET Session_Data = '{$SessionJSON}'
+				WHERE Hashed_Session_ID = '{$SessionIDHash}'
 			");
 
 		if ($flexaction['dbconnection']->affected_rows == 0) {
@@ -33,9 +35,9 @@
 					(Session_Data, Hashed_Session_ID, Users_PK)
 					VALUES
 					(
-						'" . json_encode($flexaction['session']) . "',
-						'" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "',
-						" . $flexaction['session']["User"]["PK"] . "
+						'{$SessionJSON}',
+						'{$SessionIDHash}',
+						'{$flexaction["session"]["User"]["PK"]}'
 					)
 				");
 		}
@@ -43,7 +45,7 @@
 	else {
 		$SessionCacheDelete = $flexaction['dbconnection']->query("
 				DELETE FROM Session_Cache
-				WHERE Hashed_Session_ID = '" . hash('sha512',$_SESSION[$flexaction['SessionID']]) . "'
+				WHERE Hashed_Session_ID = '{$SessionIDHash}'
 			");
 	}
 	$flexaction['dbconnection']->close();

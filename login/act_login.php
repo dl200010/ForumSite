@@ -14,14 +14,14 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-	
+
 	$ErrorMessages = "";
 	unset($flexaction['session']);
 	if (isset($_POST["email"]) && $_POST["email"] != "" && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 		$GetUserData = $flexaction['dbconnection']->query("
 				SELECT email, password1, salt1, Users_PK, AdminType
 				FROM users
-				WHERE email = '" . $flexaction['dbconnection']->real_escape_string($_POST["email"]) . "'
+				WHERE email = '{$flexaction['dbconnection']->real_escape_string($_POST["email"])}'
 		");
 		if ($GetUserData->num_rows != 1){
 			$ErrorMessages .= "|Email or password not found";
