@@ -48,6 +48,9 @@
 				$flexaction['page_javascript'] .= "window.location.replace('" . $_SERVER["HTTP_REFERER"] . "');";
 			}
 		}
+		else {
+			$ErrorMessages .= "|Email or password not found";
+		}
 	}
 
 	include $flexaction['root_path'].'/inc_error_messages.php';
