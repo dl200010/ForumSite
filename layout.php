@@ -48,7 +48,7 @@
 		</div>
 
 		<!-- Scripts -->
-		<script src="assets/jquery/3.3.1/js/jquery.min.js"></script>
+		<script src="assets/jquery/1.11.3/js/jquery.min.js"></script>
 		<script src="assets/js/skel.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
