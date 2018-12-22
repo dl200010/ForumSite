@@ -19,4 +19,15 @@
 	 *  use this file to add settings
 	 *  it can be left out as well
 	 */
+
+	//password hashing function
+	$flexaction['PasswordHash'] = function ($Password,$Salt) {
+		return hash('sha512',$Password.$Salt);
+	};
+
+	//salt generation function
+	$flexaction['NewSalt'] = function(){
+		global $flexaction;
+		return hash('sha512',bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
+	}
 ?>

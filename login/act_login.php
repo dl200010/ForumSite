@@ -35,7 +35,7 @@
 	}
 
 	if ($ErrorMessages == "") {
-		$hash_password = hash('sha512',$_POST["password"].$GetUserData['salt1']);
+		$hash_password = $flexaction['PasswordHash']($_POST["password"],$GetUserData['salt1']);
 		if ($hash_password == $GetUserData['password1']) {
 			$flexaction['session']["User"]["PK"] = $GetUserData['Users_PK'];
 			$flexaction['session']["User"]["email"] = $GetUserData['email'];
