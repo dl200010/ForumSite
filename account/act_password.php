@@ -16,6 +16,7 @@
 	 */
 
 	$ErrorMessages = "";
+	$SuccessMessages = "";
 	$GetUserData = $flexaction['dbconnection']->query("
 			SELECT Users_PK, password1, salt1, password2, salt2, password3, salt3, password4, salt4, password5, salt5
 			FROM users
@@ -31,7 +32,7 @@
 					if($GetUserData['password'.$i] != ""){
 						$CheckOldPasswordHash = $flexaction['PasswordHash']($_POST["newpassword"],$GetUserData['salt'.$i]);
 						if($CheckOldPasswordHash == $GetUserData['password'.$i]){
-							$ErrorMessages .= "|Cannot use the current or the prior 5 passwords";
+							$ErrorMessages .= "|Cannot use the current or prior passwords";
 							$i = 50;
 						}
 					}
@@ -43,16 +44,29 @@
 							$NewSalt = $flexaction['NewSalt']();
 							$NewPasswordHash = $flexaction['PasswordHash']($_POST["newpassword"],$NewSalt);
 
-							// $SessionCacheSave = $flexaction['dbconnection']->query("
-							// 		UPDATE users
-							// 		SET Users_PK, password1, salt1, password2, salt2, password3, salt3, password4, salt4, password5, salt5
-							// 		WHERE Users_PK = '{$flexaction['session']["User"]["PK"]}'
-							// 	");
+							$UpdatePassword = $flexaction['dbconnection']->query("
+									UPDATE users
+									SET
+										password5 = password4,
+										salt5 = salt4,
+										password4 = password3,
+										salt4 = salt3,
+										password3 = password2,
+										salt3 = salt2,
+										password2 = password1,
+										salt2 = salt1,
+										password1 = '{$NewPasswordHash}',
+										salt1 = '{$NewSalt}',
+										LastPassChgDate = Now()
+									WHERE Users_PK = {$flexaction['session']["User"]["PK"]}
+								");
 
-							// if ($flexaction['dbconnection']->affected_rows == 0) {
-							// 	$ErrorMessages .= "|Password failed to update";
-							// }
-							// else {}
+							if ($flexaction['dbconnection']->affected_rows == 0) {
+								$ErrorMessages .= "|Password failed to update";
+							}
+							else {
+								$SuccessMessages .= "|Password updated successfully";
+							}
 						}
 						else {
 							$ErrorMessages .= "|The new password must have at least one upper case letter, one lower case letter, and one number, " .
@@ -76,4 +90,5 @@
 		$ErrorMessages .= "|User not found";
 	}
 	include $flexaction['root_path'].'/inc_error_messages.php';
+	include $flexaction['root_path'].'/inc_success_messages.php';
 ?>
