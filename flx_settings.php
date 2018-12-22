@@ -29,5 +29,12 @@
 	$flexaction['NewSalt'] = function(){
 		global $flexaction;
 		return hash('sha512',bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
+	};
+
+	if (isset($flexaction['session']["User"]["AdminType"]) && $flexaction['session']["User"]["AdminType"] == "Admin") {
+		$flexaction['PasswordLength'] = 15;
+	}
+	else {
+		$flexaction['PasswordLength'] = 8;
 	}
 ?>

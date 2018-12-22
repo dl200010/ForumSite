@@ -38,7 +38,7 @@
 				}
 
 				if ($ErrorMessages == "") {
-					if (strlen($_POST["newpassword"]) >= 8) {
+					if (strlen($_POST["newpassword"]) >= $flexaction['PasswordLength']) {
 						if (preg_match("/[A-Z]+/",$_POST["newpassword"]) && preg_match("/[a-z]+/",$_POST["newpassword"]) && preg_match("/[0-9]+/",$_POST["newpassword"])) {
 							$NewSalt = $flexaction['NewSalt']();
 							$NewPasswordHash = $flexaction['PasswordHash']($_POST["newpassword"],$NewSalt);
@@ -60,7 +60,7 @@
 						}
 					}
 					else {
-						$ErrorMessages .= "|The new password must be at least 8 characters long";
+						$ErrorMessages .= "|The new password must be at least ".$flexaction['PasswordLength']." characters long";
 					}
 				}
 			}

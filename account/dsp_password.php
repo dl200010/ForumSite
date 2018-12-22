@@ -59,12 +59,12 @@
 				currentpassword: 'required',
 				newpassword: {
 					required: true,
-					minlength: 8,
+					minlength: {$flexaction['PasswordLength']},
 					notEqualTo: '#currentpassword'
 				},
 				confirmpassword: {
 					required: true,
-					minlength: 8,
+					minlength: {$flexaction['PasswordLength']},
 					equalTo: '#newpassword'
 				}
 			},
