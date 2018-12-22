@@ -31,6 +31,7 @@
 		return hash('sha512',bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
 	};
 
+	//forced password length depending on user type
 	if (isset($flexaction['session']["User"]["AdminType"]) && $flexaction['session']["User"]["AdminType"] == "Admin") {
 		$flexaction['PasswordLength'] = 15;
 	}
