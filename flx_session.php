@@ -67,11 +67,4 @@
 	if ($SessionCacheGet->num_rows == 1){
 		$flexaction['session'] = json_decode($SessionCacheGet->fetch_assoc()['Session_Data'],true);
 	}
-
-	if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"])) {
-		if($flexaction['function'] != "elements") {
-			$flexaction['function'] = "login";
-			$flexaction['action'] = "login";
-		}
-	}
 ?>
