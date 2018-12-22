@@ -20,13 +20,12 @@
 	 *  it can be left out as well
 	 */
 	// Save Session Cache
-	$SessionIDHash = hash('sha512',$_SESSION[$flexaction['SessionID']]);
 	if (isset($flexaction['session']) && is_array($flexaction['session'])) {
 		$SessionJSON = json_encode($flexaction['session']);
 		$SessionCacheSave = $flexaction['dbconnection']->query("
 				UPDATE Session_Cache
 				SET Session_Data = '{$SessionJSON}'
-				WHERE Hashed_Session_ID = '{$SessionIDHash}'
+				WHERE Hashed_Session_ID = '{$flexaction['SessionIDHash']}'
 			");
 
 		if ($flexaction['dbconnection']->affected_rows == 0) {
@@ -36,7 +35,7 @@
 					VALUES
 					(
 						'{$SessionJSON}',
-						'{$SessionIDHash}',
+						'{$flexaction['SessionIDHash']}',
 						'{$flexaction["session"]["User"]["PK"]}'
 					)
 				");
@@ -45,7 +44,7 @@
 	else {
 		$SessionCacheDelete = $flexaction['dbconnection']->query("
 				DELETE FROM Session_Cache
-				WHERE Hashed_Session_ID = '{$SessionIDHash}'
+				WHERE Hashed_Session_ID = '{$flexaction['SessionIDHash']}'
 			");
 	}
 	$flexaction['dbconnection']->close();

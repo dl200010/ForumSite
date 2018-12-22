@@ -25,14 +25,6 @@
 	$flexaction['page_js_files'] = "";
 	$flexaction['SessionID_length'] = 128;
 	$flexaction['cryptostrong'] = true;
-// echo '<pre>';
-// $password = 'thisisabadpassword';
-// var_dump($password);
-// $salt = hash('sha512',bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
-// var_dump($salt);
-// $hash_password = hash('sha512',$password.$salt);
-// var_dump($hash_password);
-// die();
 	$flexaction['SessionID'] = 'LID';
 	if ($_SERVER['HTTP_HOST'] == 'localhost') {
 		$flexaction['HTTPS'] = false;
@@ -65,11 +57,11 @@
 	if ($flexaction['dbconnection']->connect_error) {die("Datbase connection failed.");}
 
 	// Get Session Cache
-	$SessionIDHash = hash('sha512',$_SESSION[$flexaction['SessionID']]);
+	$flexaction['SessionIDHash'] = hash('sha512',$_SESSION[$flexaction['SessionID']]);
 	$SessionCacheGet = $flexaction['dbconnection']->query("
 			SELECT Session_Data, Hashed_Session_ID, Users_PK
 			FROM Session_Cache
-			WHERE Hashed_Session_ID = '{$SessionIDHash}'
+			WHERE Hashed_Session_ID = '{$flexaction['SessionIDHash']}'
 		");
 
 	if ($SessionCacheGet->num_rows == 1){
