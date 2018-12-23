@@ -28,7 +28,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/assets/fontawesome/4.7.0/css/fontawesome.min.css" />
-		<link rel="stylesheet" href="/assets/css/main.min.css" />
+		<link rel="stylesheet" href="/assets/main/css/main.min.css" />
 
 		<link rel="stylesheet" href="/assets/lobibox/1.2.7/css/Lobibox.min.css"/>
 	</head>
@@ -53,8 +53,8 @@
 		<script src="/assets/jquery/3.3.1/js/jquery.min.js"></script>
 		<script src="/assets/responsive-tools/1.0/js/browser.min.js"></script>
 		<script src="/assets/responsive-tools/1.0/js/breakpoints.min.js"></script>
-		<script src="/assets/js/util.min.js"></script>
-		<script src="/assets/js/main.min.js"></script>
+		<script src="/assets/main/js/util.min.js"></script>
+		<script src="/assets/main/js/main.min.js"></script>
 
 		<script src="/assets/lobibox/1.2.7/js/Lobibox.min.js"></script>
 		<!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
