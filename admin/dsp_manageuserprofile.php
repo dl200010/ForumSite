@@ -27,6 +27,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Type</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -41,7 +42,7 @@
 							</td>
 							<td>
 								<?php
-									echo "<select name='fieldtype' id='fieldtype'>";
+									echo "<select name='fieldtype_{$row['profile_fields_PK']}' id='fieldtype_{$row['profile_fields_PK']}'>";
 									foreach($flexaction['AllowedUserProfileFieldTypes'] as $item) {
 										$selected = "";
 										if ($item == $row['type']) {
@@ -52,6 +53,12 @@
 										}
 									}
 									echo "</select>";
+								?>
+							</td>
+							<td>
+								<?php
+									echo "<input type='checkbox' name='delete' id='delete_{$row['profile_fields_PK']}' value='{$row['profile_fields_PK']}' />";
+									echo "<label for='delete_{$row['profile_fields_PK']}'></label>";
 								?>
 							</td>
 						</tr>
@@ -71,6 +78,7 @@
 								?>
 							</select>
 						</td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
