@@ -26,7 +26,6 @@
 <nav id="menu">
 	<ul>
 		<li><a href="?action=home.home">Homepage</a></li>
-		<li><a href="?action=elements.elements">Elements</a></li>
 		<?php if (isset($flexaction['session']) && isset($flexaction['session']["User"]["PK"])) { ?>
 			<li>
 				<span class="opener">My Account</span>
@@ -40,6 +39,7 @@
 					<span class="opener">Administration</span>
 					<ul>
 						<li><a href="?action=admin.users">Users</a></li>
+						<li><a href="?action=elements.elements">Elements</a></li>
 					</ul>
 				</li>
 			<?php } ?>
