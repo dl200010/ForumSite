@@ -15,12 +15,14 @@
 	 *  limitations under the License.
 	 */
 	include 'act_manageuserprofile.php';
+	$FormRules = "";
+	$FormMessages = "";
 ?>
 <header id="header">
 	<h2>Manage User Profile Fields</h2>
 </header>
 <section>
-	<form method="post">
+	<form method="post" id="ManageUserProfileForm">
 		<div class="table-wrapper">
 			<table>
 				<thead>
@@ -36,6 +38,11 @@
 							<td>
 								<?php
 									$row = $ProfileFormFields->fetch_assoc();
+									$FormRules    .= "fieldname_{$row['profile_fields_PK']}:{required:true,maxlength:100},";
+									$FormMessages .= "fieldname_{$row['profile_fields_PK']}:{";
+									$FormMessages .= 	"required:'This field is required.',";
+									$FormMessages .= 	"maxlength:'This field has a max length of 100 characters.'";
+									$FormMessages .= "},";
 									echo "<input type='hidden' name='fieldid' vaue='{$row['profile_fields_PK']}' />";
 									echo "<input type='text' name='fieldname_{$row['profile_fields_PK']}' id='fieldname_{$row['profile_fields_PK']}' value='{$row['name']}' />";
 								?>
@@ -93,3 +100,18 @@
 		</div>
 	</form>
 </section>
+
+<?php
+	$flexaction['page_javascript'] .= "
+		$('#ManageUserProfileForm').validate({
+			rules: {
+				{$FormRules}
+				newfieldname:{maxlength:100}
+			},
+			messages: {
+				{$FormMessages}
+				newfieldname:{maxlength:'This field has a max length of 100 characters.'}
+			}
+		});
+	";
+?>
