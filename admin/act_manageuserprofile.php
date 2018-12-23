@@ -19,6 +19,22 @@
 	$SuccessMessages = "";
 
 	if (isset($_POST["Save"])) {
+		if (isset($_POST["delete"]) && preg_match('/^([0-9][0-9,]*?[0-9]|[0-9])$/',$_POST["delete"])) {
+			$DeleteAnswers = $flexaction['dbconnection']->query("
+				DELETE FROM user_profile_answers
+				WHERE profile_fields_PK IN ({$flexaction['dbconnection']->real_escape_string($_POST["delete"])})
+			");
+			$DeleteRows = $flexaction['dbconnection']->query("
+				DELETE FROM profile_fields
+				WHERE profile_fields_PK IN ({$flexaction['dbconnection']->real_escape_string($_POST["delete"])})
+			");
+		}
+
+		if (isset($_POST["fieldid"]) && preg_match('/^([0-9][0-9,]*?[0-9]|[0-9])$/',$_POST["fieldid"])) {
+		}
+
+		if (isset($_POST["newfieldname"]) && $_POST["newfieldname"] != "" && isset($_POST["newfieldtype"]) && $_POST["newfieldtype"] != "") {
+		}
 	}
 
 	$ProfileFormFields = $flexaction['dbconnection']->query("SELECT * FROM profile_fields");
