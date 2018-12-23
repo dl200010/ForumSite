@@ -38,7 +38,8 @@
 				<li>
 					<span class="opener">Administration</span>
 					<ul>
-						<li><a href="?action=admin.users">Users</a></li>
+						<li><a href="?action=admin.manageusers">Manage Users</a></li>
+						<li><a href="?action=admin.userprofile">User Profile Fields</a></li>
 						<li><a href="?action=elements.elements">Elements</a></li>
 					</ul>
 				</li>
