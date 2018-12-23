@@ -26,10 +26,10 @@
 		<title>The Forums</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="/assets/html5shiv/3.6.2/js/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" href="/assets/lobibox/1.2.7/css/Lobibox.min.css"/>
 	</head>
 	<body>
@@ -48,11 +48,11 @@
 		</div>
 
 		<!-- Scripts -->
-		<script src="assets/jquery/1.11.3/js/jquery.min.js"></script>
-		<script src="assets/js/skel.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-		<script src="assets/js/main.js"></script>
+		<script src="/assets/jquery/2.2.4/js/jquery.min.js"></script>
+		<script src="/assets/skel/3.0.1/js/skel.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="/assets/respond/1.4.2/js/respond.min.js"></script><![endif]-->
+		<script src="/assets/js/main.js"></script>
 		<script src="/assets/lobibox/1.2.7/js/Lobibox.min.js"></script>
 		<!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
 		<!-- <script src="/assets/lobibox/1.2.7/js/messageboxes.min.js"></script> -->
