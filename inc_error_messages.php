@@ -23,7 +23,7 @@
 				$LobiboxMsg .= $item . ', ';
 			}
 		}
-		$LobiboxMsg = substr($LobiboxMsg,0,(strlen($LobiboxMsg)-2)) . ".";
+		$LobiboxMsg = substr($LobiboxMsg,0,-2) . ".";
 		$flexaction['page_javascript'] .= "
 				Lobibox.alert('error', {
 					size: 'mini',
