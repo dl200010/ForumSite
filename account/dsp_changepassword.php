@@ -16,7 +16,7 @@
 	 */
 
 	if (isset($_POST["ChangePassword"])) {
-		include 'act_password.php';
+		include 'act_changepassword.php';
 	}
 ?>
 <header id="header">

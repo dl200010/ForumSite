@@ -30,8 +30,8 @@
 			<li>
 				<span class="opener">My Account</span>
 				<ul>
-					<li><a href="?action=account.password">Change Password</a></li>
-					<li><a href="?action=account.manage">Manage</a></li>
+					<li><a href="?action=account.changepassword">Change Password</a></li>
+					<li><a href="?action=account.manageaccount">Manage Account</a></li>
 				</ul>
 			</li>
 			<?php if ($flexaction['session']["User"]["AdminType"] == "Admin") { ?>
