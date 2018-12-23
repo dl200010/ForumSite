@@ -69,7 +69,6 @@
 					notEqualTo: 'The new password cannot be the same as the current password'
 				},
 				confirmpassword: {
-
 					required: 'Please confirm the new password',
 					equalTo: 'Please enter the same password as above'
 				}
