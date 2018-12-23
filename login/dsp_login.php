@@ -14,10 +14,7 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-
-	if (isset($_POST["Login"])) {
-		include 'act_login.php';
-	}
+	include 'act_login.php';
 ?>
 
 <header id="header">

@@ -14,44 +14,45 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-
-	$ErrorMessages = "";
-	unset($flexaction['session']);
-	if (isset($_POST["email"]) && $_POST["email"] != "" && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-		$GetUserData = $flexaction['dbconnection']->query("
-				SELECT email, password1, salt1, Users_PK, AdminType
-				FROM users
-				WHERE email = '{$flexaction['dbconnection']->real_escape_string($_POST["email"])}'
-		");
-		if ($GetUserData->num_rows != 1){
-			$ErrorMessages .= "|Email or password not found";
-		}
-		else {
-			$GetUserData = $GetUserData->fetch_assoc();
-		}
-	}
-	else {
-		$ErrorMessages .= "|Email is invalid";
-	}
-
-	if ($ErrorMessages == "") {
-		$hash_password = $flexaction['PasswordHash']($_POST["password"],$GetUserData['salt1']);
-		if ($hash_password == $GetUserData['password1']) {
-			$flexaction['session']["User"]["PK"] = $GetUserData['Users_PK'];
-			$flexaction['session']["User"]["email"] = $GetUserData['email'];
-			$flexaction['session']["User"]["AdminType"] = $GetUserData['AdminType'];
-			if (preg_replace("/^(.*?)\.(.*?)$/","$1",$_GET['action']) == 'login') {
-				$login_redirect = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[SCRIPT_NAME]" . "?action=" . $flexaction['empty_action'];
-				$flexaction['page_javascript'] .= "window.location.replace('" . $login_redirect . "');";
+	if (isset($_POST["Login"])) {
+		$ErrorMessages = "";
+		unset($flexaction['session']);
+		if (isset($_POST["email"]) && $_POST["email"] != "" && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+			$GetUserData = $flexaction['dbconnection']->query("
+					SELECT email, password1, salt1, Users_PK, AdminType
+					FROM users
+					WHERE email = '{$flexaction['dbconnection']->real_escape_string($_POST["email"])}'
+			");
+			if ($GetUserData->num_rows != 1){
+				$ErrorMessages .= "|Email or password not found";
 			}
 			else {
-				$flexaction['page_javascript'] .= "window.location.replace('" . $_SERVER["HTTP_REFERER"] . "');";
+				$GetUserData = $GetUserData->fetch_assoc();
 			}
 		}
 		else {
-			$ErrorMessages .= "|Email or password not found";
+			$ErrorMessages .= "|Email is invalid";
 		}
-	}
 
-	include $flexaction['root_path'].'/inc_error_messages.php';
+		if ($ErrorMessages == "") {
+			$hash_password = $flexaction['PasswordHash']($_POST["password"],$GetUserData['salt1']);
+			if ($hash_password == $GetUserData['password1']) {
+				$flexaction['session']["User"]["PK"] = $GetUserData['Users_PK'];
+				$flexaction['session']["User"]["email"] = $GetUserData['email'];
+				$flexaction['session']["User"]["AdminType"] = $GetUserData['AdminType'];
+				if (preg_replace("/^(.*?)\.(.*?)$/","$1",$_GET['action']) == 'login') {
+					$login_redirect = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[SCRIPT_NAME]" . "?action=" . $flexaction['empty_action'];
+					$flexaction['page_javascript'] .= "window.location.replace('" . $login_redirect . "');";
+				}
+				else {
+					$flexaction['page_javascript'] .= "window.location.replace('" . $_SERVER["HTTP_REFERER"] . "');";
+				}
+			}
+			else {
+				$ErrorMessages .= "|Email or password not found";
+			}
+		}
+
+		include $flexaction['root_path'].'/inc_error_messages.php';
+	}
 ?>

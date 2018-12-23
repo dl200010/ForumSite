@@ -14,10 +14,7 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-
-	if (isset($_POST["ChangePassword"])) {
-		include 'act_changepassword.php';
-	}
+	include 'act_changepassword.php';
 ?>
 <header id="header">
 	<h2>Change Password</h2>
