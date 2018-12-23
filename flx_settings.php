@@ -38,4 +38,6 @@
 	else {
 		$flexaction['PasswordLength'] = 8;
 	}
+
+	$flexaction['AllowedUserProfileFieldTypes'] = explode('|', "String|Date");
 ?>

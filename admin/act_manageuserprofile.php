@@ -14,10 +14,15 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
+
+	$ErrorMessages = "";
+	$SuccessMessages = "";
+
+	if (isset($_POST["Save"])) {
+	}
+
+	$ProfileFormFields = $flexaction['dbconnection']->query("SELECT * FROM profile_fields");
+
+	include $flexaction['root_path'].'/inc_error_messages.php';
+	include $flexaction['root_path'].'/inc_success_messages.php';
 ?>
-<header id="header">
-	<h2>Manage User Profile Fields</h2>
-</header>
-<section>
-	Manage User Profile Fields
-</section>
