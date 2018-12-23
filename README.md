@@ -1,4 +1,4 @@
-PHP Forum site.
+PHP Forum site. Requires PHP 7.3.0
 
 
    Copyright 2018 DL200010 <DL200010@gmail.com>
