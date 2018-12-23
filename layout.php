@@ -41,7 +41,9 @@
 
 			<!-- Sidebar -->
 			<div id="sidebar">
-				<?php echo $flexaction['menu_display']; ?>
+				<div class="inner">
+					<?php echo $flexaction['menu_display']; ?>
+				</div>
 			</div>
 
 		</div>

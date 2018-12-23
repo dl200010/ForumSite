@@ -25,24 +25,21 @@
 </header>
 <section>
 	<form method="post" id="LoginForm">
-		<div class="row uniform">
-			<div class="6u$ 12u$(xsmall)">
+		<div class="row gtr-uniform">
+			<div class="col-6 col-12-xsmall">
 				<label for="email">Email</label>
 				<input type="email" name="email" id="email" placeholder="Email" />
 			</div>
-		</div>
-		<div class="row uniform">
-			<div class="6u 12u$(xsmall)">
+			<div class="col-6 col-12-xsmall"></div>
+			<div class="col-6 col-12-xsmall">
 				<label for="password">Password</label>
 				<input type="password" name="password" id="password" placeholder="password" />
 			</div>
-		</div>
-		<div class="row uniform align-center">
-			<div class="6u 12u$(xsmall)">
-				<ul class="actions">
-					<li><input type="submit" name="Login" value="Login" class="special" /></li>
-				</ul>
+			<div class="col-6 col-12-xsmall"></div>
+			<div class="col-6 col-12-xsmall align-center">
+				<input type="submit" name="Login" value="Login" class="primary" />
 			</div>
+			<div class="col-6 col-12-xsmall"></div>
 		</div>
 	</form>
 </section>

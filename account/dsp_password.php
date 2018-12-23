@@ -24,30 +24,26 @@
 </header>
 <section>
 	<form method="post" id="PasswordChangeForm">
-		<div class="row uniform">
-			<div class="6u 12u$(xsmall)">
+		<div class="row gtr-uniform">
+			<div class="col-6 col-12-xsmall">
 				<label for="currentpassword">Current Password</label>
 				<input type="password" name="currentpassword" id="currentpassword" placeholder="current password" />
 			</div>
-		</div>
-		<div class="row uniform">
-			<div class="6u 12u$(xsmall)">
+			<div class="col-6 col-12-xsmall"></div>
+			<div class="col-6 col-12-xsmall">
 				<label for="newpassword">New Password</label>
 				<input type="password" name="newpassword" id="newpassword" placeholder="new password" />
 			</div>
-		</div>
-		<div class="row uniform">
-			<div class="6u 12u$(xsmall)">
+			<div class="col-6 col-12-xsmall"></div>
+			<div class="col-6 col-12-xsmall">
 				<label for="confirmpassword">Confirm New Password</label>
 				<input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirm new password" />
 			</div>
-		</div>
-		<div class="row uniform align-center">
-			<div class="6u 12u$(xsmall)">
-				<ul class="actions">
-					<li><input type="submit" name="ChangePassword" value="Change Password" class="special" /></li>
-				</ul>
+			<div class="col-6 col-12-xsmall"></div>
+			<div class="col-6 col-12-xsmall align-center">
+				<input type="submit" name="ChangePassword" value="Change Password" class="primary" />
 			</div>
+			<div class="col-6 col-12-xsmall"></div>
 		</div>
 	</form>
 </section>
