@@ -5,7 +5,7 @@
 -->
 	<!-- Header -->
 		<header id="header">
-			<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+			<a href="?action=home.home" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
 			<ul class="icons">
 				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 				<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
