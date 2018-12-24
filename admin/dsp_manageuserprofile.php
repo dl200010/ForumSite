@@ -43,14 +43,14 @@
 									$FormMessages .= 	"required:'This field is required.',";
 									$FormMessages .= 	"maxlength:'This field has a max length of 100 characters.'";
 									$FormMessages .= "},";
-									echo "<input type='hidden' name='fieldid[]' vaue='{$row['profile_fields_PK']}' />";
+									echo "<input type='hidden' name='fieldid[]' value='{$row['profile_fields_PK']}' />";
 									echo "<input type='text' name='fieldname_{$row['profile_fields_PK']}' id='fieldname_{$row['profile_fields_PK']}' value='{$row['name']}' />";
 								?>
 							</td>
 							<td>
 								<?php
 									echo "<select name='fieldtype_{$row['profile_fields_PK']}' id='fieldtype_{$row['profile_fields_PK']}'>";
-									foreach($flexaction['AllowedUserProfileFieldTypes'] as $item) {
+									foreach(explode('|',$flexaction['AllowedUserProfileFieldTypes']) as $item) {
 										$selected = "";
 										if ($item == $row['type']) {
 											$selected = "selected=''";
@@ -77,7 +77,7 @@
 						<td>
 							<select name="newfieldtype" id="newfieldtype">
 								<?php
-									foreach($flexaction['AllowedUserProfileFieldTypes'] as $item) {
+									foreach(explode('|',$flexaction['AllowedUserProfileFieldTypes']) as $item) {
 										if ($item != "") {
 											echo "<option value='{$item}'>{$item}</option>";
 										}

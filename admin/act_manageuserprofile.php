@@ -37,15 +37,29 @@
 		if (isset($_POST["fieldid"])) {
 			foreach($_POST["fieldid"] as $item) {
 				if (is_numeric($item)) {
+					if (
+							isset($_POST["fieldname_".$item]) && $_POST["fieldname_".$item] != "" &&
+							preg_match("/[']/",$_POST["fieldname_".$item]) !== true &&
+							isset($_POST["fieldtype_".$item]) &&
+							strpos("|".$flexaction['AllowedUserProfileFieldTypes']."|","|".$_POST["fieldtype_".$item]."|") !== false
+						) {
+						$UpdateRow = $flexaction['dbconnection']->query("
+							UPDATE profile_fields
+							SET
+								name = '{$flexaction['dbconnection']->real_escape_string($_POST["fieldname_".$item])}',
+								type = '{$flexaction['dbconnection']->real_escape_string($_POST["fieldtype_".$item])}'
+							WHERE profile_fields_PK = {$item}
+						");
+					}
 				}
 			}
 		}
 
 		if (
 				isset($_POST["newfieldname"]) && $_POST["newfieldname"] != "" &&
-				!preg_match("/[']/",$_POST["newfieldname"]) &&
-				isset($_POST["newfieldtype"]) && $_POST["newfieldtype"] != "" &&
-				!preg_match("/[']/",$_POST["newfieldtype"])
+				preg_match("/[']/",$_POST["newfieldname"]) !== true &&
+				isset($_POST["newfieldtype"]) &&
+				strpos("|".$flexaction['AllowedUserProfileFieldTypes']."|","|".$_POST["newfieldtype"]."|") !== false
 			) {
 			$NewRow = $flexaction['dbconnection']->query("
 				INSERT INTO profile_fields
