@@ -29,7 +29,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Type</th>
-						<th>Delete</th>
+						<th class="align-center">Delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -62,7 +62,7 @@
 									echo "</select>";
 								?>
 							</td>
-							<td>
+							<td class="align-center">
 								<?php
 									echo "<input type='checkbox' name='delete[]' id='delete_{$row['profile_fields_PK']}' value='{$row['profile_fields_PK']}' />";
 									echo "<label for='delete_{$row['profile_fields_PK']}'></label>";
