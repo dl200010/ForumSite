@@ -43,7 +43,7 @@
 									$FormMessages .= 	"required:'This field is required.',";
 									$FormMessages .= 	"maxlength:'This field has a max length of 100 characters.'";
 									$FormMessages .= "},";
-									echo "<input type='hidden' name='fieldid' vaue='{$row['profile_fields_PK']}' />";
+									echo "<input type='hidden' name='fieldid[]' vaue='{$row['profile_fields_PK']}' />";
 									echo "<input type='text' name='fieldname_{$row['profile_fields_PK']}' id='fieldname_{$row['profile_fields_PK']}' value='{$row['name']}' />";
 								?>
 							</td>
@@ -64,7 +64,7 @@
 							</td>
 							<td>
 								<?php
-									echo "<input type='checkbox' name='delete' id='delete_{$row['profile_fields_PK']}' value='{$row['profile_fields_PK']}' />";
+									echo "<input type='checkbox' name='delete[]' id='delete_{$row['profile_fields_PK']}' value='{$row['profile_fields_PK']}' />";
 									echo "<label for='delete_{$row['profile_fields_PK']}'></label>";
 								?>
 							</td>

@@ -19,21 +19,43 @@
 	$SuccessMessages = "";
 
 	if (isset($_POST["Save"])) {
-		if (isset($_POST["delete"]) && preg_match('/^([0-9][0-9,]*?[0-9]|[0-9])$/',$_POST["delete"])) {
-			$DeleteAnswers = $flexaction['dbconnection']->query("
-				DELETE FROM user_profile_answers
-				WHERE profile_fields_PK IN ({$flexaction['dbconnection']->real_escape_string($_POST["delete"])})
-			");
-			$DeleteRows = $flexaction['dbconnection']->query("
-				DELETE FROM profile_fields
-				WHERE profile_fields_PK IN ({$flexaction['dbconnection']->real_escape_string($_POST["delete"])})
-			");
+		if (isset($_POST["delete"])) {
+			foreach($_POST["delete"] as $item) {
+				if (is_numeric($item)) {
+					$DeleteAnswers = $flexaction['dbconnection']->query("
+						DELETE FROM user_profile_answers
+						WHERE profile_fields_PK = {$item}
+					");
+					$DeleteRows = $flexaction['dbconnection']->query("
+						DELETE FROM profile_fields
+						WHERE profile_fields_PK = {$item}
+					");
+				}
+			}
 		}
 
-		if (isset($_POST["fieldid"]) && preg_match('/^([0-9][0-9,]*?[0-9]|[0-9])$/',$_POST["fieldid"])) {
+		if (isset($_POST["fieldid"])) {
+			foreach($_POST["fieldid"] as $item) {
+				if (is_numeric($item)) {
+				}
+			}
 		}
 
-		if (isset($_POST["newfieldname"]) && $_POST["newfieldname"] != "" && isset($_POST["newfieldtype"]) && $_POST["newfieldtype"] != "") {
+		if (
+				isset($_POST["newfieldname"]) && $_POST["newfieldname"] != "" &&
+				!preg_match("/[']/",$_POST["newfieldname"]) &&
+				isset($_POST["newfieldtype"]) && $_POST["newfieldtype"] != "" &&
+				!preg_match("/[']/",$_POST["newfieldtype"])
+			) {
+			$NewRow = $flexaction['dbconnection']->query("
+				INSERT INTO profile_fields
+				(name,type)
+				VALUES
+				(
+					'{$flexaction['dbconnection']->real_escape_string($_POST["newfieldname"])}',
+					'{$flexaction['dbconnection']->real_escape_string($_POST["newfieldtype"])}'
+				)
+			");
 		}
 	}
 
