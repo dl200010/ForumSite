@@ -39,5 +39,5 @@
 		$flexaction['PasswordLength'] = 8;
 	}
 
-	$flexaction['AllowedUserProfileFieldTypes'] = "String|Date";
+	$flexaction['AllowedUserProfileFieldTypes'] = "Text|Date";
 ?>
