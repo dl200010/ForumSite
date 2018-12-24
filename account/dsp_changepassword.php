@@ -65,7 +65,7 @@
 				currentpassword: 'Please enter your current password',
 				newpassword: {
 					required: 'Please provide a new password',
-					minlength: 'The new password must be at least 8 characters long',
+					minlength: 'The new password must be at least {$flexaction['PasswordLength']} characters long',
 					notEqualTo: 'The new password cannot be the same as the current password'
 				},
 				confirmpassword: {
