@@ -50,3 +50,24 @@ Credits:
    Other:
       jQuery (jquery.com)
       Responsive Tools (github.com/ajlkn/responsive-tools)
+
+
+----------------------------------------------------------------------------
+Install
+----------------------------------------------------------------------------
+
+Have PHP 7.3.0 installed.
+Have MySQL installed and database set up.
+Have 'index.php' a default document on the website
+Copy all files into root of website.
+Open /inc_mysql_settings.php and create the ini file listed there and modify
+      inc file to point to the right folder outside of the website root
+      directly. (currently at 'c:\inetpub\')
+Go to login in a browser ON the server that is running the PHP.
+This is needed because to create an admin user, you need to come from 127.0.0.1
+Log in as "admin@admin.com" using password "admin"
+You will be redirected to an admin creation page.
+This page will no longer work once any accounts exist in the database.
+It does not validate that the email you are entering is a real email,
+      just that it follows the standard.
+Now log in as the just create admin.

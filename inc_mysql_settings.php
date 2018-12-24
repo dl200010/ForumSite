@@ -28,6 +28,11 @@
 	 *  	pass = "password"
 	 *  	dbname = "databasename"
 	 */
-	$URL_HostName = preg_replace ( '/^([a-z0-9\.]+?)\.[^\.]*?\.[^\.]+$/', "$1", strtolower($_SERVER["HTTP_HOST"]));
-	$mysql = parse_ini_file("c:/inetpub/".$URL_HostName."_mysql.ini");
+
+	// Change this to the folder that holds the INI file with the database credentials.
+	$FolderToINI = "c:/inetpub/";
+
+
+	$URL_HostName = preg_replace ('/^([a-z0-9\.]+?)\.[^\.]*?\.[^\.]+$/', "$1", strtolower($_SERVER["HTTP_HOST"]));
+	$mysql = parse_ini_file($FolderToINI.$URL_HostName."_mysql.ini");
 ?>
