@@ -14,11 +14,6 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-
-	/*
-	 *  use this file to add settings
-	 *  it can be left out as well
-	 */
 	if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"])) {
 		$flexaction['gotoEmptyAction']();
 	}

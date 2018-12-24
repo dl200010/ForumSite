@@ -14,10 +14,5 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-
-	/*
-	 *  use this file to add settings
-	 *  it can be left out as well
-	 */
 	$flexaction['page_javascript'] .= "$('#sidebar').hide();";
 ?>
