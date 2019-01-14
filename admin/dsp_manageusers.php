@@ -29,16 +29,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<form method="post" id="ManageUsers">
-					<tr>
+				<tr>
+					<form method="post" id="ManageUsers">
 						<td>
 							<input type="email" name="newuser" id="newuser" value="" placeholder="email" />
 						</td>
 						<td>
 							<input type="submit" name="Add" value="Add" class="primary" />
 						</td>
-					</tr>
-				</form>
+					</form>
+				</tr>
 				<?php for($i=0;$i<$Users->num_rows;$i++) { ?>
 					<tr>
 						<td>
