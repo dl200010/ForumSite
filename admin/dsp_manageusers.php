@@ -14,10 +14,46 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
+	include 'act_manageusers.php';
 ?>
 <header id="header">
 	<h2>Manage Users</h2>
 </header>
 <section>
-	Manage Users
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>User</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<form method="post" id="ManageUsers">
+					<tr>
+						<td>
+							<input type="email" name="newuser" id="newuser" value="" placeholder="email" />
+						</td>
+						<td>
+							<input type="submit" name="Add" value="Add" class="primary" />
+						</td>
+					</tr>
+				</form>
+				<?php for($i=0;$i<$Users->num_rows;$i++) { ?>
+					<tr>
+						<td>
+							<?php
+								$row = $Users->fetch_assoc();
+								echo $row['email'];
+							?>
+						</td>
+						<td>
+							<input type="submit" name="Edit" value="Edit" class="primary" id="<?php echo $row['Users_PK']; ?>" />
+						</td>
+					</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+	</div>
 </section>
+
