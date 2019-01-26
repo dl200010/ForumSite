@@ -1,7 +1,7 @@
 PHP Forum site. Requires PHP 7.3.0
 
 
-   Copyright 2018 DL200010 <DL200010@gmail.com>
+   Copyright 2019 DL200010 <DL200010@gmail.com>
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
