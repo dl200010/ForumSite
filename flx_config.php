@@ -20,9 +20,8 @@
 	//this is the default action, in the case that it is missing from the URL
 	$flexaction['empty_action'] = "home.home";
 
-	//the files to pull in for the layout and menu.
-	//change these two inside the flx_settings
-	//if a different layout and menu is desired in the function
+	//the file to pull in for the layout.
+	//change this file inside the flx_settings
+	//if a different layout is desired in the function
 	$flexaction['layout_file'] = 'layout.php';
-	$flexaction['menu_file'] = 'menu.php';
 ?>

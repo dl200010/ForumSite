@@ -43,7 +43,7 @@
 			<!-- Sidebar -->
 			<div id="sidebar">
 				<div class="inner">
-					<?php echo $flexaction['menu_display']; ?>
+					<?php include 'menu.php'; ?>
 				</div>
 			</div>
 

@@ -88,14 +88,6 @@
 		include $flexaction['root_path'].$flexaction['function_folder'].'flx_settings.php';
 	}
 
-	$flexaction['menu_display'] = "";
-	//include root functions throw error when it does not exist
-	if(file_exists($flexaction['root_path'].$flexaction['menu_file'])) {
-		ob_start();
-		include $flexaction['root_path'].$flexaction['menu_file'];
-		$flexaction['menu_display'] = ob_get_clean();
-	}
-
 	//go out and get content and save it to a variable
 	ob_start();
 	include $flexaction['root_path'].$flexaction['function_folder'].$flexaction['action_file'];
