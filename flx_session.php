@@ -1,6 +1,6 @@
 <?php
 	/*
-	 *  Copyright 2019 DL200010 <DL200010@gmail.com>
+	 *  Copyright 2019 Christopher Dangerfield (DL200010 <DL200010@gmail.com>)
 	 *
 	 *  Licensed under the Apache License, Version 2.0 (the "License");
 	 *  you may not use this file except in compliance with the License.
