@@ -17,5 +17,8 @@
 	if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
 		$flexaction['gotoEmptyAction']();
 	}
-	$flexaction['page_javascript'] .= "$('#sidebar').hide();";
+	$flexaction['page_javascript'] .= "
+		$('#sidebar').hide();
+		$('#sidebarCollapse').hide();
+	";
 ?>

@@ -14,5 +14,8 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-	$flexaction['page_javascript'] .= "$('#sidebar').hide();";
+	$flexaction['page_javascript'] .= "
+		$('#sidebar').hide();
+		$('#sidebarCollapse').hide();
+	";
 ?>

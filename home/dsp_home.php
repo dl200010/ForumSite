@@ -15,9 +15,6 @@
 	 *  limitations under the License.
 	 */
 ?>
-<header id="header">
-	<h2>The Forums</h2>
-</header>
-<section>
-	This is the home page for home.
-</section>
+
+<h2>The Forums</h2>
+<p>This is the home page for home.</p>

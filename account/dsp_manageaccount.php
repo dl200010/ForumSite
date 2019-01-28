@@ -15,9 +15,6 @@
 	 *  limitations under the License.
 	 */
 ?>
-<header id="header">
-	<h2>Manage my account</h2>
-</header>
-<section>
-	Manage my account
-</section>
+
+<h2>Manage my account</h2>
+<p>Manage my account</p>

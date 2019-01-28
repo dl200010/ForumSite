@@ -16,9 +16,6 @@
 	 */
 	include 'act_edituser.php';
 ?>
-<header id="header">
-	<h2>Edit User</h2>
-</header>
-<section>
-	Edit User
-</section>
+
+<h2>Edit User</h2>
+<p>Edit User</p>

@@ -16,34 +16,31 @@
 	 */
 	include 'act_admin.php';
 ?>
-<header id="header">
-	<h2>Create Administrator Account</h2>
-</header>
-<section>
-	<form method="post" id="AdminCreateForm">
-		<div class="row gtr-uniform">
-			<div class="col-6 col-12-xsmall">
-				<label for="email">Email</label>
-				<input type="email" name="email" id="email" placeholder="email" />
-			</div>
-			<div class="col-6 col-12-xsmall"></div>
-			<div class="col-6 col-12-xsmall">
-				<label for="newpassword">New Password</label>
-				<input type="password" name="newpassword" id="newpassword" placeholder="new password" />
-			</div>
-			<div class="col-6 col-12-xsmall"></div>
-			<div class="col-6 col-12-xsmall">
-				<label for="confirmpassword">Confirm New Password</label>
-				<input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirm new password" />
-			</div>
-			<div class="col-6 col-12-xsmall"></div>
-			<div class="col-6 col-12-xsmall align-center">
-				<input type="submit" name="create" value="Create New Admin" class="primary" />
-			</div>
-			<div class="col-6 col-12-xsmall"></div>
+
+<h2>Create Administrator Account</h2>
+<form method="post" id="AdminCreateForm">
+	<div class="row">
+		<div class="col-md-6 col-xs-12 form-group">
+			<label for="email">Email</label>
+			<input type="email" name="email" id="email" class="form-control" placeholder="email" />
 		</div>
-	</form>
-</section>
+		<div class="col-md-6 col-xs-12"></div>
+		<div class="col-md-6 col-xs-12 form-group">
+			<label for="newpassword">New Password</label>
+			<input type="password" name="newpassword" id="newpassword" class="form-control" placeholder="new password" />
+		</div>
+		<div class="col-md-6 col-xs-12"></div>
+		<div class="col-md-6 col-xs-12 form-group">
+			<label for="confirmpassword">Confirm New Password</label>
+			<input type="password" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="confirm new password" />
+		</div>
+		<div class="col-md-6 col-xs-12"></div>
+		<div class="col-md-6 col-xs-12 text-center">
+			<input type="submit" name="create" value="Create New Admin" class="btn btn-danger" />
+		</div>
+		<div class="col-md-6 col-xs-12"></div>
+	</div>
+</form>
 
 <?php
 	$flexaction['page_javascript'] .= "

@@ -1,5 +1,6 @@
 PHP Forum site. Requires PHP 7.3.0
 
+----------------------------------------------------------------------------
 
    Copyright 2019 Christopher Dangerfield <DL200010@gmail.com>
 
@@ -15,8 +16,15 @@ PHP Forum site. Requires PHP 7.3.0
    See the License for the specific language governing permissions and
    limitations under the License.
 
-------------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
+Credits: (license files in each asset)
+   Sidebar Menu: Bootstrapious (MIT) (https://bootstrapious.com/p/bootstrap-sidebar)
+   Bootstrap (https://getbootstrap.com)
+   FontAwesome (https://fontawesome.com)
+   jQuery (https://jquery.com)
+   jQuery Validation (https://jqueryvalidation.org)
+   Lobibox (https://lobianijs.com/site/lobibox)
 
 ----------------------------------------------------------------------------
 Install

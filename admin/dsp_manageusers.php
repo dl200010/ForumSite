@@ -16,44 +16,39 @@
 	 */
 	include 'act_manageusers.php';
 ?>
-<header id="header">
-	<h2>Manage Users</h2>
-</header>
-<section>
-	<div class="table-wrapper">
-		<table>
-			<thead>
-				<tr>
-					<th>User</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<form method="post" id="ManageUsers">
-						<td>
-							<input type="email" name="newuser" id="newuser" value="" placeholder="email" />
-						</td>
-						<td>
-							<input type="submit" name="Add" value="Add" class="primary" />
-						</td>
-					</form>
-				</tr>
-				<?php for($i=0;$i<$Users->num_rows;$i++) { ?>
-					<tr>
-						<td>
-							<?php
-								$row = $Users->fetch_assoc();
-								echo $row['email'];
-							?>
-						</td>
-						<td>
-							<input type="submit" name="Edit" value="Edit" class="primary" id="<?php echo $row['Users_PK']; ?>" />
-						</td>
-					</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-	</div>
-</section>
+
+<h2>Manage Users</h2>
+<table class="table table-dark table-striped">
+	<thead>
+		<tr>
+			<th>User</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<form method="post" id="ManageUsers">
+				<td class="form-group">
+					<input type="email" name="newuser" id="newuser" class="form-control" value="" placeholder="email" />
+				</td>
+				<td class="text-center">
+					<input type="submit" name="Add" value="Add" class="btn btn-danger" />
+				</td>
+			</form>
+		</tr>
+		<?php for($i=0;$i<$Users->num_rows;$i++) { ?>
+			<tr>
+				<td>
+					<?php
+						$row = $Users->fetch_assoc();
+						echo $row['email'];
+					?>
+				</td>
+				<td class="text-center">
+					<input type="submit" name="Edit" value="Edit" class="btn btn-danger" id="<?php echo $row['Users_PK']; ?>" />
+				</td>
+			</tr>
+		<?php } ?>
+	</tbody>
+</table>
 

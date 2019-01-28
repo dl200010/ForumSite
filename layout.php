@@ -20,24 +20,41 @@
 	<head>
 		<title>The Forums</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="stylesheet" href="/assets/vendor/bootstrap/4.2.1/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/assets/css/style.min.css" />
 		<link rel="stylesheet" href="/assets/vendor/lobibox/1.2.7/css/Lobibox.min.css"/>
 	</head>
 	<body>
-		<div id="wrapper">
-			<?php echo $flexaction['page_display']; ?>
+		<div class="wrapper">
+			<?php include 'inc_menu_side.php'; ?>
 
-			<?php include 'menu.php'; ?>
+			<div id="content">
+				<?php
+					include 'inc_menu_top.php';
+					echo $flexaction['page_display'];
+				?>
+			</div>
 		</div>
 
 		<script src="/assets/vendor/jquery/3.3.1/js/jquery.min.js"></script>
-
+		<script src="/assets/vendor/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 		<script src="/assets/vendor/lobibox/1.2.7/js/Lobibox.min.js"></script>
 		<!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
 		<!-- <script src="/assets/vendor/lobibox/1.2.7/js/messageboxes.min.js"></script> -->
 		<!-- <script src="/assets/vendor/lobibox/1.2.7/js/notifications.min.js"></script> -->
 		<script src="/assets/vendor/jquery-validation/1.19.0/js/jquery.validate.min.js"></script>
 		<script src="/assets/vendor/jquery-validation/1.19.0/js/additional-methods.min.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#sidebarCollapse').on('click', function () {
+					$('#sidebar').toggleClass('active');
+					$(this).toggleClass('active');
+				});
+			});
+		</script>
 
 		<?php
 			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {

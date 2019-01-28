@@ -18,88 +18,83 @@
 	$FormRules = "";
 	$FormMessages = "";
 ?>
-<header id="header">
-	<h2>Manage User Profile Fields</h2>
-</header>
-<section>
-	<form method="post" id="ManageUserProfileForm">
-		<div class="table-wrapper">
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Type</th>
-						<th class="align-center">Delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php for($i=0;$i<$ProfileFormFields->num_rows;$i++) { ?>
-						<tr>
-							<td>
-								<?php
-									$row = $ProfileFormFields->fetch_assoc();
-									$FormRules    .= "fieldname_{$row['profile_fields_PK']}:{required:true,maxlength:100},";
-									$FormMessages .= "fieldname_{$row['profile_fields_PK']}:{";
-									$FormMessages .= 	"required:'This field is required.',";
-									$FormMessages .= 	"maxlength:'This field has a max length of 100 characters.'";
-									$FormMessages .= "},";
-									echo "<input type='hidden' name='fieldid[]' value='{$row['profile_fields_PK']}' />";
-									echo "<input type='text' name='fieldname_{$row['profile_fields_PK']}' id='fieldname_{$row['profile_fields_PK']}' value='{$row['name']}' />";
-								?>
-							</td>
-							<td>
-								<?php
-									echo "<select name='fieldtype_{$row['profile_fields_PK']}' id='fieldtype_{$row['profile_fields_PK']}'>";
-									foreach(explode('|',$flexaction['AllowedUserProfileFieldTypes']) as $item) {
-										$selected = "";
-										if ($item == $row['type']) {
-											$selected = "selected=''";
-										}
-										if ($item != "") {
-											echo "<option value='{$item}' {$selected}>{$item}</option>";
-										}
-									}
-									echo "</select>";
-								?>
-							</td>
-							<td class="align-center">
-								<?php
-									echo "<input type='checkbox' name='delete[]' id='delete_{$row['profile_fields_PK']}' value='{$row['profile_fields_PK']}' />";
-									echo "<label for='delete_{$row['profile_fields_PK']}'></label>";
-								?>
-							</td>
-						</tr>
-					<?php } ?>
-					<tr>
-						<td>
-							<input type="text" name="newfieldname" id="newfieldname" value="" placeholder="New Field Name" />
-						</td>
-						<td>
-							<select name="newfieldtype" id="newfieldtype">
-								<?php
-									foreach(explode('|',$flexaction['AllowedUserProfileFieldTypes']) as $item) {
-										if ($item != "") {
-											echo "<option value='{$item}'>{$item}</option>";
-										}
-									}
-								?>
-							</select>
-						</td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
+
+<h2>Manage User Profile Fields</h2>
+<form method="post" id="ManageUserProfileForm">
+	<table class="table table-dark table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th class="text-center">Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php for($i=0;$i<$ProfileFormFields->num_rows;$i++) { ?>
+				<tr>
+					<td class="form-group">
+						<?php
+							$row = $ProfileFormFields->fetch_assoc();
+							$FormRules    .= "fieldname_{$row['profile_fields_PK']}:{required:true,maxlength:100},";
+							$FormMessages .= "fieldname_{$row['profile_fields_PK']}:{";
+							$FormMessages .= 	"required:'This field is required.',";
+							$FormMessages .= 	"maxlength:'This field has a max length of 100 characters.'";
+							$FormMessages .= "},";
+							echo "<input type='hidden' name='fieldid[]' class='form-control' value='{$row['profile_fields_PK']}' />";
+							echo "<input type='text' name='fieldname_{$row['profile_fields_PK']}' id='fieldname_{$row['profile_fields_PK']}' class='form-control' value='{$row['name']}' />";
+						?>
+					</td>
+					<td class="form-group">
+						<?php
+							echo "<select name='fieldtype_{$row['profile_fields_PK']}' class='form-control' id='fieldtype_{$row['profile_fields_PK']}'>";
+							foreach(explode('|',$flexaction['AllowedUserProfileFieldTypes']) as $item) {
+								$selected = "";
+								if ($item == $row['type']) {
+									$selected = "selected=''";
+								}
+								if ($item != "") {
+									echo "<option value='{$item}' {$selected}>{$item}</option>";
+								}
+							}
+							echo "</select>";
+						?>
+					</td>
+					<td class="text-center">
+						<?php
+							echo "<input type='checkbox' name='delete[]' id='delete_{$row['profile_fields_PK']}' class='form-control' value='{$row['profile_fields_PK']}' />";
+							echo "<label for='delete_{$row['profile_fields_PK']}'></label>";
+						?>
+					</td>
+				</tr>
+			<?php } ?>
+			<tr>
+				<td class="form-group">
+					<input type="text" name="newfieldname" id="newfieldname" class='form-control' value="" placeholder="New Field Name" />
+				</td>
+				<td>
+					<select name="newfieldtype" id="newfieldtype" class='form-control'>
+						<?php
+							foreach(explode('|',$flexaction['AllowedUserProfileFieldTypes']) as $item) {
+								if ($item != "") {
+									echo "<option value='{$item}'>{$item}</option>";
+								}
+							}
+						?>
+					</select>
+				</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="btn-container">
+				<li><input type="reset" value="Reset" class="btn btn-outline-danger" /></li>
+				<li><input type="submit" name="Save" value="Save" class="btn btn-danger" /></li>
+			</ul>
 		</div>
-		<div class="row">
-			<div class="col-12">
-				<ul class="actions">
-					<li><input type="reset" value="Reset" /></li>
-					<li><input type="submit" name="Save" value="Save" class="primary" /></li>
-				</ul>
-			</div>
-		</div>
-	</form>
-</section>
+	</div>
+</form>
 
 <?php
 	$flexaction['page_javascript'] .= "
