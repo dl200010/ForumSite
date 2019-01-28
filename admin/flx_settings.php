@@ -19,7 +19,16 @@
 	 *  use this file to add settings
 	 *  it can be left out as well
 	 */
-	if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"]) || $flexaction['session']["User"]["AdminType"] != "Admin") {
+	if ($flexaction['action'] == "createadmin") {
+		if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
+			$flexaction['gotoEmptyAction']();
+		}
+		$flexaction['page_javascript'] .= "
+			$('#sidebar').hide();
+			$('#sidebarCollapse').hide();
+		";
+	}
+	else if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"]) || $flexaction['session']["User"]["AdminType"] != "Admin") {
 		$flexaction['gotoEmptyAction']();
 	}
 ?>

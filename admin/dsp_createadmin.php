@@ -14,7 +14,7 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-	include 'act_admin.php';
+	include 'act_createadmin.php';
 ?>
 
 <h2>Create Administrator Account</h2>

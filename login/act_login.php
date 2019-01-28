@@ -21,7 +21,7 @@
 				isset($_POST["password"]) && $_POST["password"] == "admin"
 			) {
 			$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[SCRIPT_NAME]";
-			header("Location: " . $actual_link . "?action=create.admin");
+			header("Location: " . $actual_link . "?action=admin.createadmin");
 			die();
 		}
 
