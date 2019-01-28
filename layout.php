@@ -48,23 +48,27 @@
 		<script src="/assets/vendor/jquery-validation/1.19.0/js/jquery.validate.min.js"></script>
 		<script src="/assets/vendor/jquery-validation/1.19.0/js/additional-methods.min.js"></script>
 
+		<?php
+			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
+				echo $flexaction['page_js_files'];
+			}
+		?>
+
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('#sidebarCollapse').on('click', function () {
 					$('#sidebar').toggleClass('active');
 					$(this).toggleClass('active');
 				});
+
+				<?php
+					if (isset($flexaction['page_javascript']) && $flexaction['page_javascript'] != "") {
+						echo $flexaction['page_javascript'];
+					}
+				?>
 			});
 		</script>
 
-		<?php
-			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
-				echo $flexaction['page_js_files'];
-			}
-			if (isset($flexaction['page_javascript']) && $flexaction['page_javascript'] != "") {
-				echo "<script type='text/javascript'>$(document).ready(function() {" . $flexaction['page_javascript'] . "});</script>";
-			}
-		?>
 
 	</body>
 </html>
