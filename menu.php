@@ -15,14 +15,6 @@
 	 *  limitations under the License.
 	 */
 ?>
-<!-- Search
-<section id="search" class="alt">
-	<form method="post" action="#">
-		<input type="text" name="query" id="query" placeholder="Search" />
-	</form>
-</section>-->
-
-<!-- Menu -->
 <nav id="menu">
 	<ul>
 		<li><a href="?action=home.home">Homepage</a></li>
@@ -40,7 +32,6 @@
 					<ul>
 						<li><a href="?action=admin.manageusers">Manage Users</a></li>
 						<li><a href="?action=admin.manageuserprofile">User Profile Fields</a></li>
-						<li><a href="?action=elements.elements">Elements</a></li>
 					</ul>
 				</li>
 			<?php } ?>
@@ -50,11 +41,3 @@
 		<?php } ?>
 	</ul>
 </nav>
-
-<!-- Footer -->
-<footer id="footer">
-	<p class="copyright">
-		&copy; <?php echo date("Y"); ?> All rights reserved.<br />
-		Design: <a href="https://html5up.net" target="net.html5up">HTML5 UP</a>, but modified.
-	</p>
-</footer>
