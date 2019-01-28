@@ -24,8 +24,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link rel="stylesheet" href="/assets/vendor/bootstrap/4.2.1/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/assets/css/style.min.css" />
-		<link rel="stylesheet" href="/assets/vendor/fontawesome/5.6.3/css/all.min.css"
-		<link rel="stylesheet" href="/assets/vendor/lobibox/1.2.7/css/Lobibox.min.css"/>
+		<link rel="stylesheet" href="/assets/vendor/fontawesome/5.6.3/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/vendor/lobibox/1.2.7/css/lobibox.min.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -41,7 +41,7 @@
 
 		<script src="/assets/vendor/jquery/3.3.1/js/jquery.min.js"></script>
 		<script src="/assets/vendor/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-		<script src="/assets/vendor/lobibox/1.2.7/js/Lobibox.min.js"></script>
+		<script src="/assets/vendor/lobibox/1.2.7/js/lobibox.min.js"></script>
 		<!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
 		<!-- <script src="/assets/vendor/lobibox/1.2.7/js/messageboxes.min.js"></script> -->
 		<!-- <script src="/assets/vendor/lobibox/1.2.7/js/notifications.min.js"></script> -->
