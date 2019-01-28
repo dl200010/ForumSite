@@ -24,6 +24,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link rel="stylesheet" href="/assets/vendor/bootstrap/4.2.1/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/assets/css/style.min.css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome/5.6.3/css/all.min.css"
 		<link rel="stylesheet" href="/assets/vendor/lobibox/1.2.7/css/Lobibox.min.css"/>
 	</head>
 	<body>
