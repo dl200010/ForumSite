@@ -18,6 +18,11 @@ PHP Forum site. Requires PHP 7.3.0
 
 ----------------------------------------------------------------------------
 
+Template SidebarMenu/Dark
+            from https://github.com/dl200010/WebsiteTemplates
+
+----------------------------------------------------------------------------
+
 Credits: (license files in each asset)
    Sidebar Menu: Bootstrapious (MIT) (https://bootstrapious.com/p/bootstrap-sidebar)
    Bootstrap (https://getbootstrap.com)
