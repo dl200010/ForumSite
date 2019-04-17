@@ -15,6 +15,68 @@
 	 *  limitations under the License.
 	 */
 
-	include 'manageuserprofile_m.php';
+	$ErrorMessages = "";
+	$SuccessMessages = "";
+
+	if (isset($_POST["Save"])) {
+		if (isset($_POST["delete"])) {
+			foreach($_POST["delete"] as $item) {
+				if (is_numeric($item)) {
+					$DeleteAnswers = $flexaction['dbconnection']->query("
+						DELETE FROM user_profile_answers
+						WHERE profile_fields_PK = {$item}
+					");
+					$DeleteRows = $flexaction['dbconnection']->query("
+						DELETE FROM profile_fields
+						WHERE profile_fields_PK = {$item}
+					");
+				}
+			}
+		}
+
+		if (isset($_POST["fieldid"])) {
+			foreach($_POST["fieldid"] as $item) {
+				if (is_numeric($item)) {
+					if (
+							isset($_POST["fieldname_".$item]) && $_POST["fieldname_".$item] != "" &&
+							preg_match("/[']/",$_POST["fieldname_".$item]) !== true &&
+							isset($_POST["fieldtype_".$item]) &&
+							strpos("|".$flexaction['AllowedUserProfileFieldTypes']."|","|".$_POST["fieldtype_".$item]."|") !== false
+						) {
+						$UpdateRow = $flexaction['dbconnection']->query("
+							UPDATE profile_fields
+							SET
+								name = '{$flexaction['dbconnection']->real_escape_string($_POST["fieldname_".$item])}',
+								type = '{$flexaction['dbconnection']->real_escape_string($_POST["fieldtype_".$item])}'
+							WHERE profile_fields_PK = {$item}
+						");
+					}
+				}
+			}
+		}
+
+		if (
+				isset($_POST["newfieldname"]) && $_POST["newfieldname"] != "" &&
+				preg_match("/[']/",$_POST["newfieldname"]) !== true &&
+				isset($_POST["newfieldtype"]) &&
+				strpos("|".$flexaction['AllowedUserProfileFieldTypes']."|","|".$_POST["newfieldtype"]."|") !== false
+			) {
+			$NewRow = $flexaction['dbconnection']->query("
+				INSERT INTO profile_fields
+				(name,type)
+				VALUES
+				(
+					'{$flexaction['dbconnection']->real_escape_string($_POST["newfieldname"])}',
+					'{$flexaction['dbconnection']->real_escape_string($_POST["newfieldtype"])}'
+				)
+			");
+		}
+	}
+
+	$ProfileFormFields = $flexaction['dbconnection']->query("SELECT * FROM profile_fields");
+
+	include $flexaction['root_path'].'/inc_error_messages.php';
+	include $flexaction['root_path'].'/inc_success_messages.php';
+
 	include 'manageuserprofile_v.php';
 ?>

@@ -15,6 +15,5 @@
 	 *  limitations under the License.
 	 */
 
-	include 'edituser_m.php';
 	include 'edituser_v.php';
 ?>

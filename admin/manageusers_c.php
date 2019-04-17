@@ -15,6 +15,7 @@
 	 *  limitations under the License.
 	 */
 
-	include 'manageusers_m.php';
+	$Users = $flexaction['dbconnection']->query("SELECT Users_PK, email FROM users ORDER BY email");
+
 	include 'manageusers_v.php';
 ?>
