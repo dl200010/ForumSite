@@ -30,7 +30,7 @@
 	$flexaction['gotoEmptyAction'] = function () {
 		// get link to redirect to with the url parameter of 'action' and redirect back to self with
 		global $flexaction;
-		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[SCRIPT_NAME]";
+		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 		header("Location: " . $actual_link . "?action=" . $flexaction['empty_action']);
 		die();
 	};
