@@ -14,5 +14,7 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-	include 'act_logout.php';
 ?>
+
+<h2>Edit User</h2>
+<p>Edit User</p>

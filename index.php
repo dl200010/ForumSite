@@ -15,7 +15,7 @@
 	 *  limitations under the License.
 	 */
 
-	//uncomment the next line to display any errors
-	//ini_set('display_errors', 1);
+	// uncomment the next line to display any errors
+	// ini_set('display_errors', 1);
 	include 'flexaction.php';
 ?>

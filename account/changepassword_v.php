@@ -14,15 +14,14 @@
 	 *  See the License for the specific language governing permissions and
 	 *  limitations under the License.
 	 */
-	include 'act_createadmin.php';
 ?>
 
-<h2>Create Administrator Account</h2>
-<form method="post" id="AdminCreateForm">
+<h2>Change Password</h2>
+<form method="post" id="PasswordChangeForm">
 	<div class="row">
 		<div class="col-md-6 col-xs-12 form-group">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email" class="form-control" placeholder="email" />
+			<label for="currentpassword">Current Password</label>
+			<input type="password" name="currentpassword" id="currentpassword" class="form-control" placeholder="current password" />
 		</div>
 		<div class="col-md-6 col-xs-12"></div>
 		<div class="col-md-6 col-xs-12 form-group">
@@ -36,7 +35,7 @@
 		</div>
 		<div class="col-md-6 col-xs-12"></div>
 		<div class="col-md-6 col-xs-12 text-center">
-			<input type="submit" name="create" value="Create New Admin" class="btn btn-danger" />
+			<input type="submit" name="ChangePassword" value="Change Password" class="btn btn-danger" />
 		</div>
 		<div class="col-md-6 col-xs-12"></div>
 	</div>
@@ -44,25 +43,25 @@
 
 <?php
 	$flexaction['page_javascript'] .= "
-		$('#AdminCreateForm').validate({
+		$('#PasswordChangeForm').validate({
 			rules: {
-				email: 'required',
+				currentpassword: 'required',
 				newpassword: {
 					required: true,
-					minlength: 15,
-					notEqualTo: '#email'
+					minlength: {$flexaction['PasswordLength']},
+					notEqualTo: '#currentpassword'
 				},
 				confirmpassword: {
 					required: true,
-					minlength: 15,
+					minlength: {$flexaction['PasswordLength']},
 					equalTo: '#newpassword'
 				}
 			},
 			messages: {
-				currentpassword: 'Please enter your email',
+				currentpassword: 'Please enter your current password',
 				newpassword: {
 					required: 'Please provide a new password',
-					minlength: 'The new password must be at least 15 characters long',
+					minlength: 'The new password must be at least {$flexaction['PasswordLength']} characters long',
 					notEqualTo: 'The new password cannot be the same as the current password'
 				},
 				confirmpassword: {

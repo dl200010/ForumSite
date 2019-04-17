@@ -15,13 +15,6 @@
 	 *  limitations under the License.
 	 */
 
-	// this file is configs used by flexaction
-
-	// this is the default action, in the case that it is missing from the URL
-	$flexaction['empty_action'] = "home.home";
-
-	// the file to pull in for the layout.
-	// change this file inside the flx_settings
-	// if a different layout is desired in the function
-	$flexaction['layout_file'] = 'layout.php';
+	include 'edituser_m.php';
+	include 'edituser_v.php';
 ?>
