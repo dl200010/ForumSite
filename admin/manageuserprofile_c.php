@@ -75,8 +75,8 @@
 
 	$ProfileFormFields = $flexaction['dbconnection']->query("SELECT * FROM profile_fields");
 
-	include $flexaction['root_path'].'/inc_error_messages.php';
-	include $flexaction['root_path'].'/inc_success_messages.php';
+	include $flexaction['root_path'].'/includes/inc_error_messages.php';
+	include $flexaction['root_path'].'/includes/inc_success_messages.php';
 
 	include 'manageuserprofile_v.php';
 ?>

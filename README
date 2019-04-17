@@ -39,7 +39,7 @@ Have PHP 7.3.0 installed.
 Have MySQL installed and database set up.
 Have 'index.php' a default document on the website
 Copy all files into root of website.
-Open /inc_mysql_settings.php and create the ini file listed there and modify
+Open /includes/inc_mysql_settings.php and create the ini file listed there and modify
       inc file to point to the right folder outside of the website root
       directly. (currently at 'c:\inetpub\')
 Go to login in a browser ON the server that is running the PHP.

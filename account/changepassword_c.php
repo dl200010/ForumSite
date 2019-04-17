@@ -91,8 +91,8 @@
 		else {
 			$ErrorMessages .= "|User not found";
 		}
-		include $flexaction['root_path'].'/inc_error_messages.php';
-		include $flexaction['root_path'].'/inc_success_messages.php';
+		include $flexaction['root_path'].'/includes/inc_error_messages.php';
+		include $flexaction['root_path'].'/includes/inc_success_messages.php';
 	}
 
 	include 'changepassword_v.php';

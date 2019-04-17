@@ -50,7 +50,7 @@
 	}
 
 	// Create connection
-	include 'inc_mysql_settings.php';
+	include 'includes/inc_mysql_settings.php';
 	$flexaction['dbconnection'] = new mysqli($mysql['serverport'], $mysql['username'], $mysql['pass'], $mysql['dbname']);
 
 	// Check connection

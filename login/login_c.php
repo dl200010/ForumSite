@@ -63,7 +63,7 @@
 			}
 		}
 
-		include $flexaction['root_path'].'/inc_error_messages.php';
+		include $flexaction['root_path'].'/includes/inc_error_messages.php';
 	}
 
 	include 'login_v.php';
