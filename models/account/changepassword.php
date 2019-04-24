@@ -16,9 +16,6 @@
 	 */
 
 	if (isset($_POST["ChangePassword"])) {
-		$ErrorMessages = "";
-		$SuccessMessages = "";
-
 		$GetUserData = $flexaction['dbconnection']->query("
 				SELECT Users_PK, password1, salt1, password2, salt2, password3, salt3, password4, salt4, password5, salt5
 				FROM users
@@ -34,13 +31,13 @@
 						if($GetUserData['password'.$i] != ""){
 							$CheckOldPasswordHash = $flexaction['PasswordHash']($_POST["newpassword"],$GetUserData['salt'.$i]);
 							if($CheckOldPasswordHash == $GetUserData['password'.$i]){
-								$ErrorMessages .= "|Cannot use the current or prior passwords";
+								$flexaction['LobiboxErrorMessages'] .= "|Cannot use the current or prior passwords";
 								$i = 50;
 							}
 						}
 					}
 
-					if ($ErrorMessages == "") {
+					if ($flexaction['LobiboxErrorMessages'] == "") {
 						if (strlen($_POST["newpassword"]) >= $flexaction['PasswordLength']) {
 							if (preg_match("/[A-Z]+/",$_POST["newpassword"]) && preg_match("/[a-z]+/",$_POST["newpassword"]) && preg_match("/[0-9]+/",$_POST["newpassword"])) {
 								$NewSalt = $flexaction['NewSalt']();
@@ -64,32 +61,32 @@
 									");
 
 								if ($flexaction['dbconnection']->affected_rows == 0) {
-									$ErrorMessages .= "|Password failed to update";
+									$flexaction['LobiboxErrorMessages'] .= "|Password failed to update";
 								}
 								else {
-									$SuccessMessages .= "|Password updated successfully";
+									$flexaction['LobiboxSuccessMessages'] .= "|Password updated successfully";
 								}
 							}
 							else {
-								$ErrorMessages .= "|The new password must have at least one upper case letter, one lower case letter, and one number, " .
+								$flexaction['LobiboxErrorMessages'] .= "|The new password must have at least one upper case letter, one lower case letter, and one number, " .
 													"but it is suggested to use special characters as well.";
 							}
 						}
 						else {
-							$ErrorMessages .= "|The new password must be at least ".$flexaction['PasswordLength']." characters long";
+							$flexaction['LobiboxErrorMessages'] .= "|The new password must be at least ".$flexaction['PasswordLength']." characters long";
 						}
 					}
 				}
 				else {
-					$ErrorMessages .= "|New password and confirmation password do not match";
+					$flexaction['LobiboxErrorMessages'] .= "|New password and confirmation password do not match";
 				}
 			}
 			else {
-				$ErrorMessages .= "|Current password is invalid";
+				$flexaction['LobiboxErrorMessages'] .= "|Current password is invalid";
 			}
 		}
 		else {
-			$ErrorMessages .= "|User not found";
+			$flexaction['LobiboxErrorMessages'] .= "|User not found";
 		}
 	}
 ?>

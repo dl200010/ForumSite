@@ -49,6 +49,9 @@
 		<script src="/assets/vendor/jquery-validation/1.19.0/js/additional-methods.min.js"></script>
 
 		<?php
+			include '_lobibox_error_messages.php';
+			include '_lobibox_success_messages.php';
+
 			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
 				echo $flexaction['page_js_files'];
 			}

@@ -15,8 +15,8 @@
 	 *  limitations under the License.
 	 */
 
-	if (isset($ErrorMessages) && $ErrorMessages != "") {
-		$ErrorArray = explode('|', $ErrorMessages);
+	if (isset($flexaction['LobiboxErrorMessages']) && $flexaction['LobiboxErrorMessages'] != "") {
+		$ErrorArray = explode('|', $flexaction['LobiboxErrorMessages']);
 		$LobiboxMsg = "";
 		foreach($ErrorArray as $item) {
 			if ($item != "") {

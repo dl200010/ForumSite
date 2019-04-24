@@ -15,5 +15,5 @@
 	 *  limitations under the License.
 	 */
 
-	$Users = $flexaction['dbconnection']->query("SELECT Users_PK, email FROM users ORDER BY email");
+	$flexaction['model']['Users'] = $flexaction['dbconnection']->query("SELECT Users_PK, email FROM users ORDER BY email");
 ?>

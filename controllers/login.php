@@ -24,12 +24,12 @@
 
 	switch ($flexaction['action']) {
 		case 'login':
-			include $flexaction['root_path'].'/models/login/login.php';
 			$flexaction['action_view'] = "login";
+			include $flexaction['root_path'].'/models/login/login.php';
 			break;
 		case 'logout':
-			include $flexaction['root_path'].'/models/login/logout.php';
 			$flexaction['action_view'] = "none";
+			include $flexaction['root_path'].'/models/login/logout.php';
 			break;
 		default:
 			//default return "404" to throw a HTTP 404 error

@@ -15,8 +15,6 @@
 	 *  limitations under the License.
 	 */
 	if (isset($_POST["create"])) {
-		$ErrorMessages = "";
-
 		$GetUserData = $flexaction['dbconnection']->query("SELECT Users_PK FROM users");
 
 		if ($GetUserData->num_rows == 0){
@@ -40,27 +38,27 @@
 								");
 
 							if ($flexaction['dbconnection']->affected_rows == 0) {
-								$ErrorMessages .= "|Account creation failed";
+								$flexaction['LobiboxErrorMessages'] .= "|Account creation failed";
 							}
 							else {
 								$flexaction['gotoEmptyAction']();
 							}
 						}
 						else {
-							$ErrorMessages .= "|The new password must have at least one upper case letter, one lower case letter, and one number, " .
+							$flexaction['LobiboxErrorMessages'] .= "|The new password must have at least one upper case letter, one lower case letter, and one number, " .
 												"but it is suggested to use special characters as well.";
 						}
 					}
 					else {
-						$ErrorMessages .= "|The new password must be at least 15 characters long";
+						$flexaction['LobiboxErrorMessages'] .= "|The new password must be at least 15 characters long";
 					}
 				}
 				else {
-					$ErrorMessages .= "|New password and confirmation password do not match";
+					$flexaction['LobiboxErrorMessages'] .= "|New password and confirmation password do not match";
 				}
 			}
 			else {
-				$ErrorMessages .= "|Email is invalid";
+				$flexaction['LobiboxErrorMessages'] .= "|Email is invalid";
 			}
 		}
 		else {

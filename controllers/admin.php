@@ -32,19 +32,19 @@
 
 	switch ($flexaction['action']) {
 		case 'createadmin':
-			include $flexaction['root_path'].'/models/admin/createadmin.php';
 			$flexaction['action_view'] = "createadmin";
+			include $flexaction['root_path'].'/models/admin/createadmin.php';
 			break;
 		case 'edituser':
 			$flexaction['action_view'] = "edituser";
 			break;
 		case 'manageuserprofile':
-			include $flexaction['root_path'].'/models/admin/manageuserprofile.php';
 			$flexaction['action_view'] = "manageuserprofile";
+			include $flexaction['root_path'].'/models/admin/manageuserprofile.php';
 			break;
 		case 'manageusers':
-			include $flexaction['root_path'].'/models/admin/manageusers.php';
 			$flexaction['action_view'] = "manageusers";
+			include $flexaction['root_path'].'/models/admin/manageusers.php';
 			break;
 		default:
 			//default return "404" to throw a HTTP 404 error

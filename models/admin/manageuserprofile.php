@@ -15,9 +15,6 @@
 	 *  limitations under the License.
 	 */
 
-	$ErrorMessages = "";
-	$SuccessMessages = "";
-
 	if (isset($_POST["Save"])) {
 		if (isset($_POST["delete"])) {
 			foreach($_POST["delete"] as $item) {
@@ -73,5 +70,5 @@
 		}
 	}
 
-	$ProfileFormFields = $flexaction['dbconnection']->query("SELECT * FROM profile_fields");
+	$flexaction['model']['ProfileFormFields'] = $flexaction['dbconnection']->query("SELECT * FROM profile_fields");
 ?>

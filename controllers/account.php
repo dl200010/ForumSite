@@ -23,8 +23,8 @@
 
 	switch ($flexaction['action']) {
 		case 'changepassword':
-			include $flexaction['root_path'].'/models/account/changepassword.php';
 			$flexaction['action_view'] = "changepassword";
+			include $flexaction['root_path'].'/models/account/changepassword.php';
 			break;
 		case 'manageaccount':
 			$flexaction['action_view'] = "manageaccount";

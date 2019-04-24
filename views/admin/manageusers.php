@@ -35,11 +35,11 @@
 				</td>
 			</form>
 		</tr>
-		<?php for($i=0;$i<$Users->num_rows;$i++) { ?>
+		<?php for($i=0;$i<$flexaction['model']['Users']->num_rows;$i++) { ?>
 			<tr>
 				<td>
 					<?php
-						$row = $Users->fetch_assoc();
+						$row = $flexaction['model']['Users']->fetch_assoc();
 						echo $row['email'];
 					?>
 				</td>

@@ -15,8 +15,8 @@
 	 *  limitations under the License.
 	 */
 
-	if (isset($SuccessMessages) && $SuccessMessages != "") {
-		$SuccessArray = explode('|', $SuccessMessages);
+	if (isset($flexaction['LobiboxSuccessMessages']) && $flexaction['LobiboxSuccessMessages'] != "") {
+		$SuccessArray = explode('|', $flexaction['LobiboxSuccessMessages']);
 		$LobiboxMsg = "";
 		foreach($SuccessArray as $item) {
 			if ($item != "") {

@@ -29,11 +29,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php for($i=0;$i<$ProfileFormFields->num_rows;$i++) { ?>
+			<?php for($i=0;$i<$flexaction['model']['ProfileFormFields']->num_rows;$i++) { ?>
 				<tr>
 					<td class="form-group">
 						<?php
-							$row = $ProfileFormFields->fetch_assoc();
+							$row = $flexaction['model']['ProfileFormFields']->fetch_assoc();
 							$FormRules    .= "fieldname_{$row['profile_fields_PK']}:{required:true,maxlength:100},";
 							$FormMessages .= "fieldname_{$row['profile_fields_PK']}:{";
 							$FormMessages .= 	"required:'This field is required.',";
@@ -96,8 +96,6 @@
 </form>
 
 <?php
-	include $flexaction['root_path'].'/views/shared/_error_messages.php';
-	include $flexaction['root_path'].'/views/shared/_success_messages.php';
 	$flexaction['page_javascript'] .= "
 		$('#ManageUserProfileForm').validate({
 			rules: {

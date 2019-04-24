@@ -41,4 +41,7 @@
 	}
 
 	$flexaction['AllowedUserProfileFieldTypes'] = "Text|Date";
+
+	$flexaction['LobiboxErrorMessages'] = "";
+	$flexaction['LobiboxSuccessMessages'] = "";
 ?>
