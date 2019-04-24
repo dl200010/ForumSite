@@ -15,5 +15,23 @@
 	 *  limitations under the License.
 	 */
 
-	include 'home_v.php';
+	// This is a controller for MVC
+	// This is also where variables for this controller can be added, before the switch
+	if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"])) {
+		$flexaction['gotoEmptyAction']();
+	}
+
+	switch ($flexaction['action']) {
+		case 'changepassword':
+			include $flexaction['root_path'].'/models/account/changepassword.php';
+			$flexaction['action_view'] = "changepassword";
+			break;
+		case 'manageaccount':
+			$flexaction['action_view'] = "manageaccount";
+			break;
+		default:
+			//default return "404" to throw a HTTP 404 error
+			$flexaction['action_view'] = "404";
+			break;
+	}
 ?>

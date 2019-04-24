@@ -15,5 +15,25 @@
 	 *  limitations under the License.
 	 */
 
-	include 'manageaccount_v.php';
+	// This is a controller for MVC
+	// This is also where variables for this controller can be added, before the switch
+	$flexaction['page_javascript'] .= "
+		$('#sidebar').hide();
+		$('#sidebarCollapse').hide();
+	";
+
+	switch ($flexaction['action']) {
+		case 'login':
+			include $flexaction['root_path'].'/models/login/login.php';
+			$flexaction['action_view'] = "login";
+			break;
+		case 'logout':
+			include $flexaction['root_path'].'/models/login/logout.php';
+			$flexaction['action_view'] = "none";
+			break;
+		default:
+			//default return "404" to throw a HTTP 404 error
+			$flexaction['action_view'] = "404";
+			break;
+	}
 ?>

@@ -62,9 +62,5 @@
 				$ErrorMessages .= "|Email or password not found";
 			}
 		}
-
-		include $flexaction['root_path'].'/includes/inc_error_messages.php';
 	}
-
-	include 'login_v.php';
 ?>

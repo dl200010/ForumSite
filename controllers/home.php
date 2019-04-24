@@ -15,20 +15,15 @@
 	 *  limitations under the License.
 	 */
 
-	/*
-	 *  use this file to add settings
-	 *  it can be left out as well
-	 */
-	if ($flexaction['action'] == "createadmin") {
-		if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-			$flexaction['gotoEmptyAction']();
-		}
-		$flexaction['page_javascript'] .= "
-			$('#sidebar').hide();
-			$('#sidebarCollapse').hide();
-		";
-	}
-	else if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"]) || $flexaction['session']["User"]["AdminType"] != "Admin") {
-		$flexaction['gotoEmptyAction']();
+	// This is a controller for MVC
+	// This is also where variables for this controller can be added, before the switch
+	switch ($flexaction['action']) {
+		case 'home':
+			$flexaction['action_view'] = "home";
+			break;
+		default:
+			//default return "404" to throw a HTTP 404 error
+			$flexaction['action_view'] = "404";
+			break;
 	}
 ?>

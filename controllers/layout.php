@@ -15,5 +15,15 @@
 	 *  limitations under the License.
 	 */
 
-	include 'edituser_v.php';
+	// This is a controller for MVC
+	// This is also where variables for this controller can be added, before the switch
+	switch ($flexaction['action']) {
+		case 'examples':
+			$flexaction['action_view'] = "examples";
+			break;
+		default:
+			//default return "404" to throw a HTTP 404 error
+			$flexaction['action_view'] = "404";
+			break;
+	}
 ?>

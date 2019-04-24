@@ -42,6 +42,7 @@
 </form>
 
 <?php
+	include $flexaction['root_path'].'/views/shared/_error_messages.php';
 	$flexaction['page_javascript'] .= "
 		$('#AdminCreateForm').validate({
 			rules: {

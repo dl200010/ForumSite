@@ -16,7 +16,8 @@
 	 */
 
 	/*
-	 *  use this file to add settings
+	 *  use this file to add middleware code
+	 *  this file loads just after the session creation
 	 *  it can be left out as well
 	 */
 

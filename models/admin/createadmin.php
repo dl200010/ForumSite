@@ -66,8 +66,5 @@
 		else {
 			$flexaction['gotoEmptyAction']();
 		}
-		include $flexaction['root_path'].'/includes/inc_error_messages.php';
 	}
-
-	include 'createadmin_v.php';
 ?>

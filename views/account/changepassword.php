@@ -42,6 +42,8 @@
 </form>
 
 <?php
+	include $flexaction['root_path'].'/views/shared/_error_messages.php';
+	include $flexaction['root_path'].'/views/shared/_success_messages.php';
 	$flexaction['page_javascript'] .= "
 		$('#PasswordChangeForm').validate({
 			rules: {
