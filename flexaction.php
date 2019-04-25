@@ -19,7 +19,7 @@
 	$flexaction['root_path'] = dirname(__FILE__).'/';
 
 	// setting the layout to the default. change this inside flx_global_vars or the controller
-	$flexaction['layout_file'] = '/views/shared/_layout.php';
+	$flexaction['layout'] = '_layout';
 
 	// setting for empty action default
 	$flexaction['empty_action'] = "home.home";
@@ -60,8 +60,8 @@
 	}
 
 	// grab the controller and error out if it does not exist
-	if(file_exists($flexaction['root_path'].'/controllers/'.$flexaction['controller'].'.php')) {
-		include $flexaction['root_path'].'/controllers/'.$flexaction['controller'].'.php';
+	if(file_exists($flexaction['root_path'].'/controllers/'.$flexaction['controller'].'.Controller.php')) {
+		include $flexaction['root_path'].'/controllers/'.$flexaction['controller'].'.Controller.php';
 	}
 	else {
 		//throw a 404 when controller is not found
@@ -71,10 +71,10 @@
 
 	$flexaction['page_display'] = "";
 	// just don't include if view does not exist
-	if	(file_exists($flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.php')) {
+	if	(file_exists($flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php')) {
 		// go out and get content and save it to a variable
 		ob_start();
-		include $flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.php';
+		include $flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php';
 		$flexaction['page_display'] = ob_get_clean();
 	}
 	else if ($flexaction['action_view'] == "404")
@@ -89,15 +89,22 @@
 		include $flexaction['root_path']."/flx_session_end.php";
 	}
 
-	if ($flexaction['layout_file'] == "none")
+	if ($flexaction['layout'] == "none")
 	{
 		// dump display data if there is no layout file
 		echo $flexaction['page_display'];
 	}
-	else if(file_exists($flexaction['root_path'].$flexaction['layout_file'])) {
+	else if(file_exists($flexaction['root_path'].'/views/shared/'.$flexaction['layout'].'.HTML.php')) {
 		// go out and get content and save it to a variable
 		ob_start();
-		include $flexaction['root_path'].$flexaction['layout_file'];
+		include $flexaction['root_path'].'/views/shared/'.$flexaction['layout'].'.HTML.php';
+		echo ob_get_clean();
+	}
+	else if(file_exists($flexaction['root_path'].$flexaction['layout'])) {
+		// go out and get content and save it to a variable
+		// allow full patth layout
+		ob_start();
+		include $flexaction['root_path'].$flexaction['layout'];
 		echo ob_get_clean();
 	}
 	else {

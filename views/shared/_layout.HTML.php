@@ -29,11 +29,11 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<?php include '_menu_side.php'; ?>
+			<?php include '_menu_side.HTML.php'; ?>
 
 			<div id="content">
 				<?php
-					include '_menu_top.php';
+					include '_menu_top.HTML.php';
 					echo $flexaction['page_display'];
 				?>
 			</div>
