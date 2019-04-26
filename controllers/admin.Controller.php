@@ -26,8 +26,8 @@
 			$('#sidebarCollapse').hide();
 		";
 	}
-	else if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"]) || $flexaction['session']["User"]["AdminType"] != "Admin") {
-		$flexaction['gotoEmptyAction']();
+	else {
+		$flexaction['Authorized']();
 	}
 
 	switch ($flexaction['action']) {

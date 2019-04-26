@@ -32,6 +32,14 @@
 		return hash('sha512',bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
 	};
 
+	// salt generation function
+	$flexaction['Authorized'] = function(){
+		global $flexaction;
+		if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"])) {
+			$flexaction['gotoEmptyAction']();
+		}
+	};
+
 	// forced password length depending on user type
 	if (isset($flexaction['session']["User"]["AdminType"]) && $flexaction['session']["User"]["AdminType"] == "Admin") {
 		$flexaction['PasswordLength'] = 15;

@@ -17,9 +17,7 @@
 
 	// This is a controller for MVC
 	// This is also where variables for this controller can be added, before the switch
-	if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"])) {
-		$flexaction['gotoEmptyAction']();
-	}
+	$flexaction['Authorized']();
 
 	switch ($flexaction['action']) {
 		case 'changepassword':
