@@ -27,17 +27,22 @@
 	};
 
 	// salt generation function
-	$flexaction['NewSalt'] = function(){
+	$flexaction['NewSalt'] = function() {
 		global $flexaction;
 		return hash('sha512',bin2hex(openssl_random_pseudo_bytes($flexaction['SessionID_length'], $flexaction['cryptostrong'])));
 	};
 
 	// salt generation function
-	$flexaction['Authorized'] = function(){
+	$flexaction['Authorized'] = function($AdminTypeAccept = "") {
 		global $flexaction;
 		if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"])) {
 			$flexaction['gotoEmptyAction']();
 		}
+		else if ($AdminTypeAccept != "") {
+			if(!in_array($flexaction['session']["User"]["AdminType"], explode(",",$AdminTypeAccept))) {
+				$flexaction['gotoEmptyAction']();
+			}	
+		} 
 	};
 
 	// forced password length depending on user type

@@ -17,21 +17,19 @@
 
 	// This is a controller for MVC
 	// This is also where variables for this controller can be added, before the switch
-	if ($flexaction['action'] == "createadmin") {
-		if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-			$flexaction['gotoEmptyAction']();
-		}
-		$flexaction['page_javascript'] .= "
-			$('#sidebar').hide();
-			$('#sidebarCollapse').hide();
-		";
-	}
-	else {
-		$flexaction['Authorized']();
+	if ($flexaction['action'] != "createadmin") {
+		$flexaction['Authorized']("Admin");
 	}
 
 	switch ($flexaction['action']) {
 		case 'createadmin':
+			if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
+				$flexaction['gotoEmptyAction']();
+			}
+			$flexaction['page_javascript'] .= "
+				$('#sidebar').hide();
+				$('#sidebarCollapse').hide();
+			";
 			$flexaction['action_view'] = "createadmin";
 			include $flexaction['root_path'].'/models/admin/createadmin.php';
 			break;
