@@ -30,19 +30,19 @@
 				$('#sidebar').hide();
 				$('#sidebarCollapse').hide();
 			";
+			$flexaction['action_model'] = "createadmin";
 			$flexaction['action_view'] = "createadmin";
-			include $flexaction['root_path'].'/models/admin/createadmin.php';
 			break;
 		case 'edituser':
 			$flexaction['action_view'] = "edituser";
 			break;
 		case 'manageuserprofile':
+			$flexaction['action_model'] = "manageuserprofile";
 			$flexaction['action_view'] = "manageuserprofile";
-			include $flexaction['root_path'].'/models/admin/manageuserprofile.php';
 			break;
 		case 'manageusers':
+			$flexaction['action_model'] = "manageusers";
 			$flexaction['action_view'] = "manageusers";
-			include $flexaction['root_path'].'/models/admin/manageusers.php';
 			break;
 		default:
 			//default return "404" to throw a HTTP 404 error

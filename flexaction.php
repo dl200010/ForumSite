@@ -30,12 +30,29 @@
 		include $flexaction['root_path'].'/flx_config.php';
 	}
 
-	$flexaction['gotoEmptyAction'] = function () {
+	$flexaction['GotoEmptyAction'] = function () {
 		// get link to redirect to with the url parameter of 'action' and redirect back to self with
 		global $flexaction;
+		$flexaction['SessionEnd']();
 		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 		header("Location: " . $actual_link . "?action=" . $flexaction['empty_action']);
 		die();
+	};
+
+	$flexaction['SessionStart'] = function () {
+		global $flexaction;
+		// file used to setup session if it exists
+		if(file_exists($flexaction['root_path']."/flx_session_start.php")) {
+			include $flexaction['root_path']."/flx_session_start.php";
+		}
+	};
+
+	$flexaction['SessionEnd'] = function () {
+		global $flexaction;
+		// last file to run before displaying and finishing used to save variables before finishing
+		if(file_exists($flexaction['root_path']."/flx_session_end.php")) {
+			include $flexaction['root_path']."/flx_session_end.php";
+		}
 	};
 
 	// check to see if the action exists and that it contains a period
@@ -46,13 +63,15 @@
 		$flexaction['action'] = preg_replace("/^(.*?)\.(.*?)$/","$2",$_GET['action']);
 	}
 	else {
-		$flexaction['gotoEmptyAction']();
+		$flexaction['GotoEmptyAction']();
 	}
 
-	// file used to setup session if it exists
-	if(file_exists($flexaction['root_path']."/flx_session_start.php")) {
-		include $flexaction['root_path']."/flx_session_start.php";
-	}
+	// Defaulting model and view to nothing
+	$flexaction['action_model'] = "";
+	$flexaction['action_view'] = "";
+
+	// Start Session
+	$flexaction['SessionStart']();
 
 	// include the flx_middleware, if it exists
 	if(file_exists($flexaction['root_path'].'/flx_middleware.php')) {
@@ -64,30 +83,34 @@
 		include $flexaction['root_path'].'/controllers/'.$flexaction['controller'].'.Controller.php';
 	}
 	else {
-		//throw a 404 when controller is not found
+		// throw a 404 when controller is not found
+		$flexaction['SessionEnd']();
 		http_response_code(404);
 		die();
 	}
 
+	if	(file_exists($flexaction['root_path'].'/models/'.$flexaction['controller'].'/'.$flexaction['action_model'].'.php')) {
+		// Including the model set in Controller
+		include $flexaction['root_path'].'/models/'.$flexaction['controller'].'/'.$flexaction['action_model'].'.php';
+	}
+
 	$flexaction['page_display'] = "";
-	// just don't include if view does not exist
 	if	(file_exists($flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php')) {
-		// go out and get content and save it to a variable
+		// go out and get content of the view and save it to a variable
 		ob_start();
 		include $flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php';
 		$flexaction['page_display'] = ob_get_clean();
 	}
 	else if ($flexaction['action_view'] == "404")
 	{
-		//throw a 404 when the action_view is 404
+		// throw a 404 when the action_view is 404
+		$flexaction['SessionEnd']();
 		http_response_code(404);
 		die();
 	}
 
-	// last file to run before displaying and finishing used to save variables before finishing
-	if(file_exists($flexaction['root_path']."/flx_session_end.php")) {
-		include $flexaction['root_path']."/flx_session_end.php";
-	}
+	// End Session
+	$flexaction['SessionEnd']();
 
 	if ($flexaction['layout'] == "none")
 	{
