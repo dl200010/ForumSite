@@ -30,6 +30,9 @@
 		include $flexaction['root_path'].'/flx_config.php';
 	}
 
+	// Indicator if the session was started
+	$flexaction['SessionStartedUp'] = false;
+
 	$flexaction['GotoEmptyAction'] = function () {
 		// get link to redirect to with the url parameter of 'action' and redirect back to self with
 		global $flexaction;
@@ -42,16 +45,18 @@
 	$flexaction['SessionStart'] = function () {
 		global $flexaction;
 		// file used to setup session if it exists
-		if(file_exists($flexaction['root_path']."/flx_session_start.php")) {
+		if(!$flexaction['SessionStartedUp'] && file_exists($flexaction['root_path']."/flx_session_start.php")) {
 			include $flexaction['root_path']."/flx_session_start.php";
+			$flexaction['SessionStartedUp'] = true;
 		}
 	};
 
 	$flexaction['SessionEnd'] = function () {
 		global $flexaction;
 		// last file to run before displaying and finishing used to save variables before finishing
-		if(file_exists($flexaction['root_path']."/flx_session_end.php")) {
+		if($flexaction['SessionStartedUp'] && file_exists($flexaction['root_path']."/flx_session_end.php")) {
 			include $flexaction['root_path']."/flx_session_end.php";
+			$flexaction['SessionStartedUp'] = false;
 		}
 	};
 
@@ -132,6 +137,7 @@
 	}
 	else {
 		//throw a 404 when layout file is not found
+		$flexaction['SessionEnd']();
 		http_response_code(404);
 		die();
 	}
