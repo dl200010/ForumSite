@@ -36,11 +36,11 @@
 	$flexaction['Authorized'] = function($AdminTypeAccept = "") {
 		global $flexaction;
 		if (!isset($flexaction['session']) || !isset($flexaction['session']["User"]["PK"])) {
-			$flexaction['gotoEmptyAction']();
+			$flexaction['GotoEmptyAction']();
 		}
 		else if ($AdminTypeAccept != "") {
 			if(!in_array($flexaction['session']["User"]["AdminType"], explode(",",$AdminTypeAccept))) {
-				$flexaction['gotoEmptyAction']();
+				$flexaction['GotoEmptyAction']();
 			}	
 		} 
 	};

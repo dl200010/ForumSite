@@ -41,7 +41,7 @@
 								$flexaction['LobiboxErrorMessages'] .= "|Account creation failed";
 							}
 							else {
-								$flexaction['gotoEmptyAction']();
+								$flexaction['GotoEmptyAction']();
 							}
 						}
 						else {
@@ -62,7 +62,7 @@
 			}
 		}
 		else {
-			$flexaction['gotoEmptyAction']();
+			$flexaction['GotoEmptyAction']();
 		}
 	}
 ?>

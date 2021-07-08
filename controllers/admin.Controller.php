@@ -24,7 +24,7 @@
 	switch ($flexaction['action']) {
 		case 'createadmin':
 			if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-				$flexaction['gotoEmptyAction']();
+				$flexaction['GotoEmptyAction']();
 			}
 			$flexaction['page_javascript'] .= "
 				$('#sidebar').hide();
