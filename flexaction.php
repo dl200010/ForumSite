@@ -103,13 +103,13 @@
 	if ($flexaction['action_view'] == "404") {
 		// throw a 404 when the action_view is 404
 		$flexaction['SessionEnd']();
-		include $flexaction['root_path'].'/views/shared/'.$flexaction['404'].'.HTML.php';
+		include $flexaction['root_path'].'/views/shared/'.$flexaction['404'].'.View.php';
 		$flexaction['page_display'] = ob_get_clean();
 	}
-	else if	(file_exists($flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php')) {
+	else if	(file_exists($flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.View.php')) {
 		// go out and get content of the view and save it to a variable
 		ob_start();
-		include $flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php';
+		include $flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.View.php';
 		$flexaction['page_display'] = ob_get_clean();
 	}
 
@@ -120,10 +120,10 @@
 		// dump display data if layout set to "none"
 		echo $flexaction['page_display'];
 	}
-	else if(file_exists($flexaction['root_path'].'/views/shared/'.$flexaction['layout'].'.HTML.php')) {
+	else if(file_exists($flexaction['root_path'].'/views/shared/'.$flexaction['layout'].'.View.php')) {
 		// go out and get content and save it to a variable
 		ob_start();
-		include $flexaction['root_path'].'/views/shared/'.$flexaction['layout'].'.HTML.php';
+		include $flexaction['root_path'].'/views/shared/'.$flexaction['layout'].'.View.php';
 		echo ob_get_clean();
 	}
 	else {

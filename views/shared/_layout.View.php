@@ -29,11 +29,11 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<?php include '_menu_side.HTML.php'; ?>
+			<?php include '_menu_side.View.php'; ?>
 
 			<div id="content">
 				<?php
-					include '_menu_top.HTML.php';
+					include '_menu_top.View.php';
 					echo $flexaction['page_display'];
 				?>
 			</div>
@@ -49,8 +49,8 @@
 		<script src="/assets/vendor/jquery-validation/1.19.0/js/additional-methods.min.js"></script>
 
 		<?php
-			include '_lobibox_error_messages.php';
-			include '_lobibox_success_messages.php';
+			include '_lobibox_error_messages.View.php';
+			include '_lobibox_success_messages.View.php';
 
 			if (isset($flexaction['page_js_files']) && $flexaction['page_js_files'] != "") {
 				echo $flexaction['page_js_files'];
