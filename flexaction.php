@@ -21,6 +21,9 @@
 	// setting the layout to the default. change this inside flx_global_vars or the controller
 	$flexaction['layout'] = '_layout';
 
+	// setting 404 page to the default. change this inside flx_global_vars or the controller
+	$flexaction['404'] = "_404";
+
 	// setting for empty action default
 	$flexaction['empty_action'] = "home.home";
 
@@ -61,8 +64,7 @@
 	};
 
 	// check to see if the action exists and that it contains a period
-	if(isset($_GET['action']) && strpos($_GET['action'],".") !== false)
-	{
+	if(isset($_GET['action']) && strpos($_GET['action'],".") !== false) {
 		// grab the controller and action
 		$flexaction['controller'] = preg_replace("/^(.*?)\.(.*?)$/","$1",$_GET['action']);
 		$flexaction['action'] = preg_replace("/^(.*?)\.(.*?)$/","$2",$_GET['action']);
@@ -89,37 +91,33 @@
 	}
 	else {
 		// throw a 404 when controller is not found
-		$flexaction['SessionEnd']();
-		http_response_code(404);
-		die();
+		$flexaction['action_view'] = "404";
 	}
 
-	if	(file_exists($flexaction['root_path'].'/models/'.$flexaction['controller'].'/'.$flexaction['action_model'].'.php')) {
+	if	(file_exists($flexaction['root_path'].'/models/'.$flexaction['controller'].'/'.$flexaction['action_model'].'.Model.php')) {
 		// Including the model set in Controller
-		include $flexaction['root_path'].'/models/'.$flexaction['controller'].'/'.$flexaction['action_model'].'.php';
+		include $flexaction['root_path'].'/models/'.$flexaction['controller'].'/'.$flexaction['action_model'].'.Model.php';
 	}
 
 	$flexaction['page_display'] = "";
-	if	(file_exists($flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php')) {
+	if ($flexaction['action_view'] == "404") {
+		// throw a 404 when the action_view is 404
+		$flexaction['SessionEnd']();
+		include $flexaction['root_path'].'/views/shared/'.$flexaction['404'].'.HTML.php';
+		$flexaction['page_display'] = ob_get_clean();
+	}
+	else if	(file_exists($flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php')) {
 		// go out and get content of the view and save it to a variable
 		ob_start();
 		include $flexaction['root_path'].'/views/'.$flexaction['controller'].'/'.$flexaction['action_view'].'.HTML.php';
 		$flexaction['page_display'] = ob_get_clean();
 	}
-	else if ($flexaction['action_view'] == "404")
-	{
-		// throw a 404 when the action_view is 404
-		$flexaction['SessionEnd']();
-		http_response_code(404);
-		die();
-	}
 
 	// End Session
 	$flexaction['SessionEnd']();
 
-	if ($flexaction['layout'] == "none")
-	{
-		// dump display data if there is no layout file
+	if ($flexaction['layout'] == "none") {
+		// dump display data if layout set to "none"
 		echo $flexaction['page_display'];
 	}
 	else if(file_exists($flexaction['root_path'].'/views/shared/'.$flexaction['layout'].'.HTML.php')) {
@@ -128,17 +126,8 @@
 		include $flexaction['root_path'].'/views/shared/'.$flexaction['layout'].'.HTML.php';
 		echo ob_get_clean();
 	}
-	else if(file_exists($flexaction['root_path'].$flexaction['layout'])) {
-		// go out and get content and save it to a variable
-		// allow full patth layout
-		ob_start();
-		include $flexaction['root_path'].$flexaction['layout'];
-		echo ob_get_clean();
-	}
 	else {
-		//throw a 404 when layout file is not found
-		$flexaction['SessionEnd']();
-		http_response_code(404);
-		die();
+		// dump display data if there is no layout file
+		echo $flexaction['page_display'];
 	}
 ?>
