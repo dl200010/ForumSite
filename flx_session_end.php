@@ -22,13 +22,20 @@
 	// Save Session Cache
 	if (isset($flexaction['session']) && is_array($flexaction['session'])) {
 		$SessionJSON = json_encode($flexaction['session']);
-		$SessionCacheSave = $flexaction['dbconnection']->query("
-				UPDATE Session_Cache
-				SET Session_Data = '{$SessionJSON}'
+		$CheckSessionCache = $flexaction['dbconnection']->query("
+				SELECT Hashed_Session_ID
+				FROM Session_Cache
 				WHERE Hashed_Session_ID = '{$flexaction['SessionIDHash']}'
 			");
 
-		if ($flexaction['dbconnection']->affected_rows == 0) {
+		if($CheckSessionCache->num_rows == 1) {
+			$SessionCacheSave = $flexaction['dbconnection']->query("
+					UPDATE Session_Cache
+					SET Session_Data = '{$SessionJSON}'
+					WHERE Hashed_Session_ID = '{$flexaction['SessionIDHash']}'
+				");
+		}
+		else {
 			$SessionCacheSave = $flexaction['dbconnection']->query("
 					INSERT INTO Session_Cache
 					(Session_Data, Hashed_Session_ID, Users_PK)

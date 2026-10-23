@@ -1,4 +1,4 @@
-PHP Forum site. Requires PHP 7.3.0
+PHP Forum site. Requires PHP 8.5.12
 
 ----------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ Credits: (license files in each asset)
 Install
 ----------------------------------------------------------------------------
 
-Have PHP 7.3.0 installed.
+Have PHP 8.5.12 installed.
 Have MySQL installed and database set up.
 Have 'index.php' a default document on the website
 Copy all files into root of website.
